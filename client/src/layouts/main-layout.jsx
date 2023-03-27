@@ -1,17 +1,20 @@
+import BreadCrumb from "../components/Breadcrumb";
 import SideBar from "../components/SideBar";
-import {pages} from "../data/page-list";
+import { pages } from "../data/page-list";
 
-export default function MainLayout({ child }) {
+export default function MainLayout({ header, child }) {
   return (
     <>
-      <div className="grid grid-cols-5 gap-3">
+      <div className="grid grid-cols-5">
         <div className="col-span-1">
           <SideBar props={pages} />
         </div>
         <div className="col-span-4">
-          <div className="grid-rows-10">
-            <div className="grid-span-1">TITLE</div>
-            <div className="grid-span-9">{child}</div>
+          <div className="grid grid-rows-6">
+            <div className="row-span-1 h-36">
+              <BreadCrumb data = {header}/>
+            </div>
+            <div className="row-span-5">{child}</div>
           </div>
         </div>
       </div>
