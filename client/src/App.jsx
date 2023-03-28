@@ -1,7 +1,7 @@
 import MainLayout from "./layouts/main-layout";
 
 function App() {
-  return <MainLayout />;
+  return <MainLayout header="Dashboard"/>;
 }
 
 export default App;
