@@ -1,5 +1,9 @@
-import styles from "../../styles/Breadcrumb/breadcrumb.module.scss"
+import styles from "../../styles/Breadcrumb/breadcrumb.module.scss";
 
-export default function BreadCrumb({data}) {
-  return <div className={styles.container}>{data}</div>
+export default function BreadCrumb({ data }) {
+  return (
+    <div className={styles.container}>
+      <span>{data}</span>
+    </div>
+  );
 }
