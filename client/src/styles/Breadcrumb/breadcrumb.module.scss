@@ -1,4 +1,13 @@
-.container{
-    border-bottom: 3px solid var(--color-blue) ;
-    height: 100%;
+.container {
+  border-bottom: 3px solid var(--color-blue);
+  height: 100%;
+  width: 100%;
+  color: white;
+  font-size: 3.2rem;
+  padding: 0 3.5rem;
+  display:table;
+  span{
+    display:table-cell;
+ vertical-align:middle;
+  }
 }
