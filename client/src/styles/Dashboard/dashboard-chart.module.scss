@@ -26,13 +26,26 @@
   flex: 1;
 }
 
-.main-chart-donut{
+.main-chart-donut {
   height: 40rem;
   width: 40rem;
 }
 
-
-.main-chart-pyramid{
+.main-chart-pyramid {
   width: 80%;
   height: auto;
+}
+
+.big-container {
+  border: 2px solid var(--color-gray);
+  border-radius: 10px;
+  background-color: var(--color-dark-gray);
+  margin-top: 4rem;
+}
+
+.main-chart-mixed {
+  canvas {
+    width: 1000px;
+    height: 500px;
+  }
 }
