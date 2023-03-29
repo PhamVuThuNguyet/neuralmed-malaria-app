@@ -2,22 +2,18 @@ import BreadCrumb from "../components/Breadcrumb";
 import SideBar from "../components/SideBar";
 import { pages } from "../data/page-list";
 
-export default function MainLayout({ header, child }) {
+export default function MainLayout(props) {
   return (
-    <>
-      <div className="grid grid-cols-5">
-        <div className="col-span-1">
-          <SideBar props={pages} />
-        </div>
-        <div className="col-span-4">
-          <div className="grid grid-rows-6">
-            <div className="row-span-1 h-36">
-              <BreadCrumb data = {header}/>
-            </div>
-            <div className="row-span-5">{child}</div>
-          </div>
-        </div>
+    <div className="flex h-screen w-screen">
+      <div className="w-1/6">
+        <SideBar pages={pages} />
       </div>
-    </>
+      <div className="flex flex-1 flex-col">
+        <div className="h-36">
+          <BreadCrumb data={props.header} />
+        </div>
+        <div className="flex-1 p-24">{props.children}</div>
+      </div>
+    </div>
   );
 }

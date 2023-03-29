@@ -1,0 +1,35 @@
+.container {
+  border: 2px solid var(--color-blue);
+  border-radius: 10px;
+  width: 25rem;
+  height: 13rem;
+  padding: 2rem;
+  margin-bottom: 2.5rem;
+  :last-child{
+    margin-bottom:0;
+  }
+}
+
+.title {
+  color: white;
+  font-family: Montserrat;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.data {
+}
+
+.icon {
+  svg {
+    height: 4.5rem;
+    width: 4.5rem;
+  }
+}
+
+.total {
+  color: white;
+  font-family: Montserrat;
+  font-size: 4rem;
+  font-weight: 700;
+}

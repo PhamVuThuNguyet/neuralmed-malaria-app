@@ -1,0 +1,38 @@
+.container {
+  border: 2px solid var(--color-gray);
+  border-radius: 10px;
+  background-color: var(--color-dark-gray);
+  width: 57.9rem;
+  height: 58.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  color: white;
+  font-family: Montserrat;
+  font-size: 2rem;
+  font-weight: 700;
+  border-bottom: 2px solid var(--color-blue);
+  padding: 2.5rem;
+  height: 7.6rem;
+}
+
+.chart-area {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.main-chart-donut{
+  height: 40rem;
+  width: 40rem;
+}
+
+
+.main-chart-pyramid{
+  width: 80%;
+  height: auto;
+}
