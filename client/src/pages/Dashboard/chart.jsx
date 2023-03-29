@@ -251,7 +251,7 @@ export default function Chart() {
               <Doughnut
                 data={donutData}
                 options={donutOptions}
-                plugins={donutOptions}
+                plugins={donutPlugins}
               />
             </div>
           </div>
