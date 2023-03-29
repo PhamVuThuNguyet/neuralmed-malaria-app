@@ -1,7 +1,7 @@
 {
   "overrides": [
     {
-      "files": "*.test.js",
+      "files": "*.js",
       "options": {
         "trailingComma": "es5",
         "tabWidth": 2,
