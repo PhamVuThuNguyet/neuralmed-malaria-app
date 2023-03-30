@@ -187,21 +187,21 @@ export default function Chart() {
     datasets: [
       {
         type: "bar",
-        label: "Bar Dataset",
+        label: "Male",
         data: [100, 200, 600, 300, 100, 200, 600, 300, 100, 200, 600, 300],
         backgroundColor: style.getPropertyValue("--color-blue"),
       },
       {
         type: "bar",
-        label: "Bar Dataset 2",
+        label: "Female",
         data: [200, 100, 350, 100, 200, 100, 350, 100, 200, 100, 350, 100],
         backgroundColor: style.getPropertyValue("--color-orange"),
       },
       {
         type: "line",
-        label: "Line Dataset",
+        label: "Total",
         data: [300, 300, 950, 400, 300, 300, 950, 400, 300, 300, 950, 400],
-        borderColor: style.getPropertyValue("--color-red"),
+        borderColor: "white",
         borderWidth: 1,
         fill: false,
       },
@@ -226,6 +226,20 @@ export default function Chart() {
     scales: {
       y: {
         beginAtZero: true,
+      },
+    },
+    plugins: {
+      legend: {
+        position: "bottom",
+        labels: {
+          color: "white",
+          font: {
+            family: "Montserrat",
+            size: 12.3,
+          },
+          usePointStyle: true,
+          padding: 41.5,
+        },
       },
     },
   };
