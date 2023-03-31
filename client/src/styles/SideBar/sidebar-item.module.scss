@@ -11,3 +11,23 @@
   color: var(--color-gray);
   font-size: 2.4rem;
 }
+
+.active-icon svg path {
+  stroke: white;
+}
+
+.active-title {
+  font-weight: bold;
+  color: white;
+  font-size: 2.4rem;
+}
+
+.active-container {
+  padding: 1rem 1.5rem;
+  background-color: var(--color-dark-gray);
+  border-radius: 20px;
+  margin-left: 1.5rem;
+  margin-right: 5rem;
+  margin-top: 1.4rem;
+  margin-bottom: 1.4rem;
+}
