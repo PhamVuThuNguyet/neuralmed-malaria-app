@@ -1,6 +1,7 @@
 import MainLayout from "./layouts/main-layout";
 import AllRecords from "./pages/AllRecords";
 import Dashboard from "./pages/Dashboard";
+import Diagnosis from "./pages/Diagnosis"
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 
@@ -11,6 +12,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/allrecords" element={<AllRecords />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/diagnosis" element={<Diagnosis />} />
       </Routes>
     </MainLayout>
   );
