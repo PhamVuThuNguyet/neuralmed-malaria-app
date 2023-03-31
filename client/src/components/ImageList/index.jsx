@@ -1,5 +1,5 @@
 import styles from "../../styles/ImageList/imagelist.module.scss";
-import ImageItem from "./item";
+import ImageItem from "./image-item";
 // Btn icon
 import { ReactComponent as GridIcon } from "../../assets/Grid.svg";
 import { ReactComponent as ListIcon } from "../../assets/List.svg";
