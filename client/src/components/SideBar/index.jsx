@@ -8,7 +8,12 @@ export default function SideBar(props) {
       <Logo />
       {props.pages.map((page) => (
         <Link to={page.to}>
-          <SidebarItem key={page.title} icon={page.icon} title={page.title} />
+          <SidebarItem
+            key={page.title}
+            icon={page.icon}
+            title={page.title}
+            to={page.to}
+          />
         </Link>
       ))}
     </div>

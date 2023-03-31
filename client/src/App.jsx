@@ -1,7 +1,7 @@
 import MainLayout from "./layouts/main-layout";
 import AllRecords from "./pages/AllRecords";
 import Dashboard from "./pages/Dashboard";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 
 function App() {
