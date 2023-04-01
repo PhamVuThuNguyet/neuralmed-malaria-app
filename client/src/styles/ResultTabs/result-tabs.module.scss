@@ -1,0 +1,28 @@
+.res-label {
+    font-size: 2rem;
+    color: var(--color-blue);
+}
+
+.res-desc {
+    padding: 2rem;
+    border-radius: 10px;
+    font-size: 2rem;
+    background-color: var(--color-black);
+    span.span-red {
+        color: var(--color-red);
+    }
+    span.span-yellow {
+        color: var(--color-yellow);
+    }
+    span.span-green {
+        color: var(--color-green);
+    }
+}
+
+.btn-cont button {
+    font-size: 0.7em;
+    min-width: 12rem;
+    border-radius: 10px;
+    background-color: var(--color-bg);
+    padding: 1rem;
+}
