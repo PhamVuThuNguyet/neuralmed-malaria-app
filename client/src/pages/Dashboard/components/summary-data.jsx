@@ -1,4 +1,4 @@
-import styles from "../../styles/Dashboard/dashboard-summary.module.scss";
+import styles from "../../../styles/Dashboard/dashboard-summary.module.scss";
 export default function SummaryData(props) {
   return (
     <div className={styles.container}>

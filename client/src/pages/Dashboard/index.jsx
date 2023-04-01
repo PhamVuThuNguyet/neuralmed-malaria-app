@@ -1,7 +1,7 @@
 import styles from "../../styles/Dashboard/dashboard.module.scss";
-import SummaryData from "./summary-data";
+import SummaryData from "./components/summary-data";
 import { data } from "../../data/data-summary-list";
-import Chart from "./chart";
+import Chart from "./components/chart";
 
 export default function Dashboard() {
   return (
