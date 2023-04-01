@@ -17,4 +17,9 @@ export const pages = [
         icon: <SquaresIcon />,
         title: "Dashboard",
     },
+    {
+        to: "/diagnosis",
+        icon: <SquaresIcon />,
+        title: "Diagnosis",
+    },
 ];
