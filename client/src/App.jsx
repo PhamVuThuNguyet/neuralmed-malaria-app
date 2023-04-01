@@ -1,13 +1,13 @@
 import MainLayout from "./layouts/main-layout";
 import AllRecords from "./pages/AllRecords";
 import Dashboard from "./pages/Dashboard";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
+import { Pathname } from "./utils/get-location";
 
 function App() {
-  const location = useLocation();
   const header = () => {
-    switch (location.pathname) {
+    switch (Pathname()) {
       case "/allrecords":
         return "All Records";
       case "/dashboard":
