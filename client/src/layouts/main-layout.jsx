@@ -12,7 +12,7 @@ export default function MainLayout(props) {
         <div className="h-36">
           <BreadCrumb data={props.header} />
         </div>
-        <div className="flex-1 p-24">{props.children}</div>
+        <div className="flex-1 p-24 m-auto">{props.children}</div>
       </div>
     </div>
   );

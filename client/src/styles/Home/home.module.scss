@@ -1,0 +1,24 @@
+.recent__title {
+  font-family: Montserrat;
+  font-size: 3.6rem;
+  font-weight: 700;
+  color: var(--color-light-gray);
+  margin-top: 7rem;
+  text-align: center;
+}
+
+.recent__files {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.import__button {
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+  height: fit-content;
+  label {
+    cursor: pointer;
+  }
+}

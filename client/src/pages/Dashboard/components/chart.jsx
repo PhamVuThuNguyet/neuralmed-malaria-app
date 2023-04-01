@@ -1,4 +1,4 @@
-import styles from "../../styles/Dashboard/dashboard-chart.module.scss";
+import styles from "../../../styles/Dashboard/dashboard-chart.module.scss";
 import React from "react";
 import {
   Chart as ChartJS,
