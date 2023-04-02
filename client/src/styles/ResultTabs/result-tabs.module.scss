@@ -7,6 +7,7 @@
     padding: 2rem;
     border-radius: 10px;
     font-size: 2rem;
+    color: #fff;
     background-color: var(--color-black);
     span.span-red {
         color: var(--color-red);
@@ -25,4 +26,19 @@
     border-radius: 10px;
     background-color: var(--color-bg);
     padding: 1rem;
+}
+
+.tabs-list {
+    background-color: var(--color-black);
+    font-size: 1.6rem;
+    span {
+        color: var(--color-light-gray);
+        padding: 1rem 3rem;
+    }
+    .tab-selected {
+        background-color: var(--color-bg);
+        span {
+            color: #fff;
+        }
+    }
 }
