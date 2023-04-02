@@ -17,4 +17,9 @@ export const pages = [
         icon: <SquaresIcon />,
         title: "Dashboard",
     },
+    {
+        to: "/admin",
+        icon: <SquaresIcon />,
+        title: "Admin Console",
+    },
 ];

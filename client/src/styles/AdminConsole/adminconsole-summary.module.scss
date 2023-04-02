@@ -1,0 +1,42 @@
+.button {
+    button {
+      background-color: var(--color-blue) !important;
+      color: white;
+      font-weight: 500;
+    }
+  }
+.title {
+    font-family: Montserrat;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: white;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+.total{
+  font-family: Montserrat;
+  font-size: 3.5rem;
+  font-weight: 600;
+  color: white;
+  margin-left: 70px;
+}
+.table{
+  margin-top: 2rem;
+}
+
+.container {
+  border: 2px solid var(--color-blue);
+  border-radius: 10px;
+  width: 18rem;
+  :last-child{
+    margin-bottom:0;
+  }
+}
+
+.icon {
+  svg {
+    height: 4.5rem;
+    width: 4.5rem;
+  }
+}
+
