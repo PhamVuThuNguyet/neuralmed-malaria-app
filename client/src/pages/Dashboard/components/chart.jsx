@@ -202,7 +202,7 @@ export default function Chart() {
         label: "Total",
         data: [300, 300, 950, 400, 300, 300, 950, 400, 300, 300, 950, 400],
         borderColor: "white",
-        borderWidth: 1,
+        borderWidth: 2,
         fill: false,
       },
     ],
