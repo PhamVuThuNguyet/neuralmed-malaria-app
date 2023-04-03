@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import styles from "../../styles/Diagnosis/editing-canvas.module.scss";
 
 export default function EditingCanvas(props) {
     const [selectedImage, setSelectedImage] = useState(null);
@@ -40,8 +41,8 @@ export default function EditingCanvas(props) {
 
     return(
         <>
-            <div className="p-3">
-                <p>Image 1</p>
+            <div className={styles["canvas-cont"]}>
+                <p className={styles["canvas-title"]}>Image 1</p>
                 <canvas
                     id="main-canvas"
                     ref={canvasRef}

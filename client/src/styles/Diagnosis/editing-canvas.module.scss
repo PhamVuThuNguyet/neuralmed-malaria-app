@@ -1,0 +1,33 @@
+.canvas-cont {
+    width: 100%;
+    aspect-ratio: 16/9;
+    overflow: scroll;
+    border: 2px solid var(--color-gray);
+    /* width */
+    &::-webkit-scrollbar {
+        width: 7px;
+    }
+    
+    /* Track */
+    &::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+    }
+    
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+        background: var(--color-gray); 
+        border-radius: 10px;
+    }
+    
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+        background: var(--color-blue); 
+    }
+}
+
+.canvas-title {
+    padding: 1rem 1.75rem;
+    font-size: 1.75rem;
+    color: #fff;
+}

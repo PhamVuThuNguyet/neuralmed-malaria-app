@@ -5,9 +5,17 @@ import styles from "../../styles/ResultTabs/result-tabs.module.scss";
 export default function ResultTabs(props) {
     return (
         <Tabs>
-            <TabList>
-                <Tab>AI result</Tab>
-                <Tab>Doctor result</Tab>
+            <TabList className={styles["tabs-list"]}>
+                <Tab selectedClassName={styles["tab-selected"]}>
+                    <span>
+                        AI result
+                    </span>
+                </Tab>
+                <Tab selectedClassName={styles["tab-selected"]}>
+                    <span>
+                        Doctor result
+                    </span>
+                </Tab>
             </TabList>
             {/* AI */}
             <TabPanel>
