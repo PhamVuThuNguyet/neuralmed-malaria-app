@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import styles from "../../styles/Diagnosis/editing-canvas.module.scss";
+import styles from "../../../styles/Diagnosis/editing-canvas.module.scss";
 
 export default function EditingCanvas(props) {
     const [selectedImage, setSelectedImage] = useState(null);
