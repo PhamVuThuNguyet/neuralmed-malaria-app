@@ -1,0 +1,120 @@
+.form-cont {
+    padding: 2rem;
+}
+.import-button {
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+    height: fit-content;
+    label {
+        cursor: pointer;
+    }
+}
+.title {
+    color: var(--color-blue);
+    font-size: 1.6rem;
+    font-family: Montserrat;
+    font-weight: 400;
+    transition: 0.35s;
+}
+.container {
+    border: 1px solid var(--color-blue);
+    border-radius: 10px;
+    padding: 2rem 12rem;
+    width: fit-content;
+    height: fit-content;
+    margin-top: 11.2rem;
+    transition: 0.35s;
+}
+
+.container:hover, .title:hover {
+    background-color: var(--color-blue);
+    .title {
+        color: #fff;
+    }
+    svg path {
+        stroke: #fff;
+    }
+}
+
+.back-button {
+    border: 1px solid var(--color-gray);
+    border-radius: 10px;
+    padding: 1rem 3rem;
+    &:hover {
+        border: 1px solid var(--color-blue);
+        svg path {
+            stroke: var(--color-blue);
+        }
+    }
+}
+
+.next-button {
+    padding: 2rem 7rem;
+    background-color: var(--color-blue);
+    border: 1px;
+    color: #fff;
+    transition: 0.25s;
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
+.cancel-button {
+    padding: 2rem 7rem;
+    background-color: #000;
+    border: 1px solid var(--color-gray);
+    color: #fff;
+    transition: 0.25s;
+    &:hover {
+        transform: scale(1.1);
+        background-color: var(--color-red);
+        border: 1px solid var(--color-red);
+    }
+}
+
+.form-cont {
+    input, label{
+        font-size: 2rem;
+    }
+    label {
+        color: var(--color-blue);
+        display: block;
+        margin-bottom: 0.5rem;
+        font-size: 2rem;
+        line-height: 1.25rem;
+        font-weight: 500;
+        margin-bottom: 1rem;
+    }
+    input {
+        box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+        background-color: transparent;
+        border: 2px solid var(--color-gray);
+        font-size: 2rem;
+        line-height: 1.25rem;
+        width: 100%;
+        padding: 1rem;
+        font-weight: normal;
+        color: #fff;
+        border-radius: 10px;
+        &:focus {
+            border: 2px solid var(--color-blue);
+            outline: none;
+        }
+    }
+}
+.preview-image {
+    border-radius: 10px;
+    border: 1px solid var(--color-gray);
+}
+.preview-label {
+    font-size: 1.5rem;
+    text-align: center;
+    border-bottom: 1px solid var(--color-gray);
+}
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
