@@ -1,17 +1,17 @@
 import { ReactComponent as FaceMask } from "../assets/FaceMask.svg";
 export const data = [
     {
-        "title": "Doctor account",
+        "title": "Doctor Account",
         "icon": <FaceMask/>,
         "total": 69
     },
     {
-        "title": "Patients account",
+        "title": "Technologist Account",
         "icon": <FaceMask/>,
         "total": 59
     },
     {
-        "title": "Employee account",
+        "title": "Employee Account",
         "icon": <FaceMask/>,
         "total": 85
     }

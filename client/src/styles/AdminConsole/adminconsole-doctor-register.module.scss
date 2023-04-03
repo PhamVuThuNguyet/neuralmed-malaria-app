@@ -1,15 +1,102 @@
 .button {
-    button {
-      background-color: var(--color-blue) !important;
-      color: white;
-      font-weight: 500;
-    }
-  }
-  .text {
+  display: flex;
+  justify-content: end;
+  button {
+    background-color: var(--color-blue) !important;
+    color: white;
+    font-weight: 600;
     font-family: Montserrat;
     font-size: 1.5rem;
-    font-weight: 500;
-    color: white;
-    margin-left: 10px;
-    margin-top: 10px;
+  }
+}
+
+.form__container {
+  background-color: rgb(37, 37, 37);
+  margin-left: 2rem;
+  border-radius: 10px;
+  padding-top: 1.7rem;
+  padding-left: 6.8rem;
+  padding-right: 6.8rem;
+  form {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2rem;
+  }
+}
+
+.summary__items__container{
+  display: flex;
+  justify-content: space-around;
+}
+
+.form__label__text{
+  font-family: Montserrat;
+  font-size: 2rem;
+  font-weight: 500;
+  color: white;
+}
+
+.input {
+  border-color: rgb(53, 158, 255);
+  border-radius: 10px;
+  border-width: 1px;
+  color: white;
+  background-color: rgb(37, 37, 37);
+  width: 100%;
+  padding: 1.5rem 1rem;
+}
+
+.datepicker {
+  border-color: rgb(53, 158, 255);
+  border-radius: 10px;
+  border-width: 1px;
+  background-color: rgb(37, 37, 37);
+  width: 100%;
+  padding: 1.5rem 1rem;
+  color: white;
+}
+
+.title {
+  font-family: Montserrat;
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  margin-top: 0.6rem;
+  padding-left: 5.5rem;
+  padding-right: 5.5rem;
+}
+
+.dropmenu {
+  svg {
+    height: 3.2rem;
+    width: 3.2rem;
+  }
+  font-family: Montserrat;
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  background-color: var(--color-blue) !important;
+  width: fit-content;
+  border-color: rgb(53, 158, 255);
+  border-top-right-radius: 0.8rem; 
+  border-bottom-right-radius: 0.8rem;
+  padding-right: 3.5rem;
+  padding-left: 3.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.label__container {
+  width: 100%;
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+}
+
+.content__label__container{
+  border-color: rgb(53, 158, 255);
+  border-width: 1px;
+  border-radius: 1rem;
 }

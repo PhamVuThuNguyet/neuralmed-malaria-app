@@ -1,22 +1,26 @@
-import { React, useState } from "react";
-import SummaryData from "./summary-data";
+import { React } from "react";
+import SummaryData from "./Components/summary-data";
 import { data } from "../../data/admin-console";
-import DoctorRegister from "./register-form";
+import DoctorRegister from "./Components/doctor-register-form";
+import styles from "../../styles/AdminConsole/adminconsole-doctor-register.module.scss";
+import DropMenu from "./Components/drop-down-menu";
 export default function AdminConsole() {
-
-    return (
-      <div className="grid grid-cols-2">
-        <div className="grid grid-cols-3 gap-20">
-          {data.map((item) => (
-          <SummaryData item={item} />
-          ))}   
-        </div>
-        <div className="ml-32 bg-[#252525] rounded-xl">
-          <div>
-           
-          </div>
-          <DoctorRegister />
-        </div>
+  return (
+    <div className="grid grid-cols-2">
+      <div className={styles.summary__items__container}>
+        {data.map((item) => (
+        <SummaryData item={item} />
+        ))}   
       </div>
-    );
-  }
+      <div className={styles.form__container}>
+        <div className={styles.label__container}>
+          <div className={styles.content__label__container}>
+            <label className={styles.title}>Create</label>
+            <DropMenu className = {styles.dropmenu}></DropMenu>
+          </div>
+        </div>
+        <DoctorRegister />
+      </div>
+    </div>
+  );
+}

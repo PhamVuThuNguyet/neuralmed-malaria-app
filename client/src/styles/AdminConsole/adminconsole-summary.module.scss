@@ -3,40 +3,39 @@
       background-color: var(--color-blue) !important;
       color: white;
       font-weight: 500;
+      width: 22.8rem;
+      height: 5rem;
     }
   }
 .title {
-    font-family: Montserrat;
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: white;
-    margin-left: 10px;
-    margin-top: 10px;
+  font-family: Montserrat;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: white;
+  margin-left: 1.5rem;
+  margin-top: 0.5rem;
 }
 .total{
   font-family: Montserrat;
-  font-size: 3.5rem;
+  font-size: 4rem;
   font-weight: 600;
   color: white;
-  margin-left: 70px;
-}
-.table{
-  margin-top: 2rem;
+  margin-left: 7rem;
 }
 
 .container {
   border: 2px solid var(--color-blue);
   border-radius: 10px;
-  width: 18rem;
-  :last-child{
-    margin-bottom:0;
-  }
+  width: 22.8rem;
+  height: 12.8rem;
+  margin-right: 1.6rem;
 }
 
 .icon {
   svg {
-    height: 4.5rem;
-    width: 4.5rem;
+    height: 5.6rem;
+    width: 5.6rem;
+    margin-top: 2.5rem;
   }
 }
 

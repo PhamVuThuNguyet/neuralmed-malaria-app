@@ -1,4 +1,4 @@
-import styles from "../../styles/AdminConsole/adminconsole-summary.module.scss";
+import styles from "../../../styles/AdminConsole/adminconsole-summary.module.scss";
 import { Button } from "antd";
 
 export default function SummaryData(props) {
@@ -8,7 +8,7 @@ export default function SummaryData(props) {
         <div className={styles.title}>{props.item.title}</div>
           <div
             className={[
-            "flex justify-around items-center gap-2",
+            "flex space-y-6 justify-around items-center",
             styles["data"],
             ].join(" ")}
           >
@@ -21,9 +21,6 @@ export default function SummaryData(props) {
          type="primary"
          onClick=""
          size="large"
-         style={{
-         width: 180,
-         }}
          >
          Manage
          </Button>
