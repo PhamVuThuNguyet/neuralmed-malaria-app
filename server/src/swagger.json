@@ -24,6 +24,10 @@
     {
       "name": "patient",
       "description": "API for patient"
+    },
+    {
+      "name": "test-result",
+      "description": "API for get test results"
     }
   ],
   "paths": {
@@ -102,6 +106,28 @@
       }
     },
     "/health-records/{recordId}": {
+      "get": {
+        "tags": ["medical"],
+        "summary": "Get healthcare record by id",
+        "operationId": "getHealthcareRecordById",
+        "parameters": [
+          {
+            "name": "recordId",
+            "in": "path",
+            "description": "ID of record",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "642ae74558856d9fb4a8cfcb"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      },
       "put": {
         "tags": ["medical"],
         "summary": "Update healthcare record",
@@ -115,7 +141,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "example": "6428512d510aacca13a0a3a4"
+              "example": "642ae74558856d9fb4a8cfcb"
             }
           }
         ],
@@ -124,7 +150,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/HealthcareRecord"
+                "$ref": "#/components/schemas/UpdateHealthRecord"
               }
             }
           }
@@ -259,6 +285,38 @@
           }
         }
       }
+    },
+    "/test-results": {
+      "get": {
+        "tags": ["test-result"],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      }
+    },
+    "/test-results/{id}": {
+      "get": {
+        "tags": ["test-result"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id of test resulst",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "12312312312312312"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -322,7 +380,7 @@
         "properties": {
           "patient": {
             "type": "string",
-            "example": "6424557ecae8ac7ca40072c6"
+            "example": "642ae9ef544dee961c27bedd"
           },
           "doctor": {
             "type": "string",
@@ -331,6 +389,18 @@
           "department": {
             "type": "string",
             "example": "Phong kham noi"
+          }
+        }
+      },
+      "UpdateHealthRecord": {
+        "type": "object",
+        "properties": {
+          "testResult": {
+            "type": "object",
+            "example": {
+              "isPositive": true,
+              "url": ["result1.jpg", "result2.jgp"]
+            }
           },
           "info": {
             "type": "object"
@@ -354,6 +424,10 @@
           "idCard": {
             "type": "String",
             "example": "113"
+          },
+          "birth": {
+            "type": "Number",
+            "example": 2001
           },
           "info": {
             "type": "object"
