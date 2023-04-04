@@ -3,6 +3,16 @@ const testResultService = require('../services/test-result.service');
 const { MESSAGES } = require('../constants/variables');
 
 class HealthRecordController {
+
+  async index(req, res) {
+    try {
+      const healthRecords = await healthRecordService.findMany();
+      res.json(healthRecords);
+    } catch (error) {
+      res.status(500).send();
+    }
+  }
+
   /**
    * @notice [POST] /api/v1/medicals
    * @param {*} req
