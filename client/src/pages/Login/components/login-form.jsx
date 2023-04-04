@@ -2,9 +2,8 @@ import { React } from "react";
 import { Button, Input, Form, DatePicker } from "antd";
 import { Link } from "react-router-dom";
 import { ReactComponent as NeuralMed } from "../../../assets/NeuralMed.svg";
-
 import axios from 'axios';
-import styles from "../../../styles/AdminConsole/adminconsole-doctor-register.module.scss";
+import styles from "../../../styles/Login/login-form.module.scss";
 
 const LoginForm = () => {
   const [form] = Form.useForm();
@@ -15,7 +14,7 @@ const LoginForm = () => {
     },
     {
       name: "password",
-      inputComponent: <Input.Password placeholder="Password" className={styles.input}></Input.Password>
+      inputComponent: <Input.Password placeholder="Password" className={styles.password}></Input.Password>
     }
   ];
 
@@ -32,7 +31,10 @@ const LoginForm = () => {
   return (
     <div>
       <Form.Item>
-          <NeuralMed />
+        <div className ={styles.icon}>
+          <NeuralMed > </NeuralMed>
+        </div>
+        <label className={styles.title}>LOGIN</label>
       </Form.Item>
       <Form form={form} onFinish={onFinish}  layout="vertical">
         {formItems.map((item, index) => (
@@ -43,15 +45,15 @@ const LoginForm = () => {
             {item.inputComponent}
           </Form.Item>
         ))}
-        <Form.Item>
+        <Form.Item >
           <Link to="/">
-              Forgot password
+            <p className={styles["forgot-pw"]}>Forgot password</p>
           </Link>
         </Form.Item>
         
         <Form.Item> 
           <div className={styles.button}>
-            <Button
+            <Button 
               type="primary"
               htmlType="submit"
               size="large"
