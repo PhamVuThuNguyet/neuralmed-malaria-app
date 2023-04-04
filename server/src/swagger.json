@@ -337,13 +337,9 @@
       "User": {
         "type": "object",
         "properties": {
-          "code": {
-            "type": "string",
-            "example": "MAL000000"
-          },
           "username": {
             "type": "string",
-            "example": "chung.nguyen"
+            "example": "chung.nguyen_quang"
           },
           "password": {
             "type": "string",
@@ -356,8 +352,8 @@
           "role": {
             "type": "string",
             "description": "Employee/Doctor/Medical Technologist",
-            "example": "Employee",
-            "enum": ["Doctor", "Medical Technologist", "Employee"]
+            "example": "Doctor",
+            "enum": ["Doctor", "Medical Technologist"]
           },
           "avatar": {
             "type": "string",

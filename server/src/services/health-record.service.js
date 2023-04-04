@@ -6,8 +6,8 @@ class HealthRecordService {
     return HealthRecord.find(data).populate('doctor', '-password').populate('patient').populate('testResult');
   }
 
-  findOne(data) {
-    return HealthRecord.findOne(data).populate('doctor', '-password').populate('patient').populate('testResult')
+  findOne(data, options = {}) {
+    return HealthRecord.findOne(data, {} , options).populate('doctor', '-password').populate('patient').populate('testResult')
   }
 
   findById(id) {

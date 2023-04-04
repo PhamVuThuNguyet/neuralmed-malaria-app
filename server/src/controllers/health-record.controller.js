@@ -41,9 +41,12 @@ class HealthRecordController {
    */
   async latest(req, res) {
     try {
-      const medical = await healthRecordService.findOne({
-        patient: req.params.patientId,
-      });
+      const medical = await healthRecordService.findOne(
+        {
+          patient: req.params.patientId,
+        },
+        { sort: { createdAt: -1 } }
+      );
       res.json(medical);
     } catch (error) {
       res.status(500).send();

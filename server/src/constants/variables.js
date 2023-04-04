@@ -9,7 +9,10 @@ const MESSAGES = {
   
 }
 
+const PREFIX_CODE = 'MAL';
+
 module.exports = {
   DEFAULT_AVATAR,
-  MESSAGES
+  MESSAGES,
+  PREFIX_CODE
 }
