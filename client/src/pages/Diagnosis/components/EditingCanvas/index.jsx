@@ -74,7 +74,7 @@ export default function EditingCanvas(props) {
     const width = endX - startX;
     const height = endY - startY;
 
-    ctx.lineWidth = 5;
+    ctx.lineWidth = 1;
     ctx.strokeStyle = "#0fa";
     ctx.strokeRect(startX, startY, width, height);
     ctx.fillStyle = "#0fa";
