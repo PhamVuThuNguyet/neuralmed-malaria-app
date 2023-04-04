@@ -21,5 +21,8 @@ export const pages = [
         to: "/admin",
         icon: <SquaresIcon />,
         title: "Admin Console",
+        to: "/diagnosis",
+        icon: <SquaresIcon />,
+        title: "Diagnosis",
     },
 ];

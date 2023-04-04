@@ -1,0 +1,375 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Swagger Malaria - OpenAPI 3.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3001/api/v1"
+    }
+  ],
+  "tags": [
+    {
+      "name": "auth",
+      "description": "API for login"
+    },
+    {
+      "name": "admin",
+      "description": "API for admin"
+    },
+    {
+      "name": "medical",
+      "description": "API for healthcare record"
+    },
+    {
+      "name": "patient",
+      "description": "API for patient"
+    }
+  ],
+  "paths": {
+    "/auth/login": {
+      "post": {
+        "tags": ["auth"],
+        "summary": "Login to account",
+        "description": "Login",
+        "operationId": "login",
+        "requestBody": {
+          "description": "Passing username and password to login",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Login"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/Login"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      }
+    },
+    "/admin/add-user": {
+      "post": {
+        "tags": ["admin"],
+        "summary": "Add new user to system",
+        "description": "Admin system add new user (doctor, medical technoligist, employee,...)",
+        "operationId": "addUser",
+        "requestBody": {
+          "description": "Passing user info",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      }
+    },
+    "/health-records": {
+      "post": {
+        "tags": ["medical"],
+        "summary": "Create new healthcare record",
+        "description": "Create new healthcare record",
+        "operationId": "createMedical",
+        "requestBody": {
+          "description": "Passing healthcare record info",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HealthcareRecord"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      }
+    },
+    "/health-records/{recordId}": {
+      "put": {
+        "tags": ["medical"],
+        "summary": "Update healthcare record",
+        "description": "Update healthcare record",
+        "operationId": "updateHealthcareRecord",
+        "parameters": [
+          {
+            "name": "recordId",
+            "in": "path",
+            "description": "ID of record",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "6428512d510aacca13a0a3a4"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Passing healthcare record info",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HealthcareRecord"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      }
+    },
+    "/health-records/patient/{patientId}": {
+      "get": {
+        "tags": ["medical"],
+        "parameters": [
+          {
+            "name": "patientId",
+            "in": "path",
+            "description": "ID of patient",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "6424557ecae8ac7ca40072c6"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      }
+    },
+    "/health-records/patient/{patientId}/latest": {
+      "get": {
+        "tags": ["medical"],
+        "parameters": [
+          {
+            "name": "patientId",
+            "in": "path",
+            "description": "ID of patient",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "6424557ecae8ac7ca40072c6"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      }
+    },
+    "/patients": {
+      "post": {
+        "tags": ["patient"],
+        "summary": "Create new patient",
+        "description": "Create new patient",
+        "operationId": "createPatient",
+        "requestBody": {
+          "description": "Passing patient info",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Patient"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      }
+    },
+    "/patients/{patientId}": {
+      "put": {
+        "tags": ["patient"],
+        "summary": "Update patient info",
+        "description": "Update patient info",
+        "operationId": "updatePatient",
+        "parameters": [
+          {
+            "name": "patientId",
+            "in": "path",
+            "description": "ID of patient",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "6424557ecae8ac7ca40072c6"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Passing patient info",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Patient"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      }
+    },
+    "/patients/{idCard}": {
+      "get": {
+        "tags": ["patient"],
+        "parameters": [
+          {
+            "name": "idCard",
+            "in": "path",
+            "description": "IDCard of patient",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "046201012333"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Login": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "example": "admin"
+          },
+          "password": {
+            "type": "string",
+            "example": "admin"
+          }
+        }
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "MAL000000"
+          },
+          "username": {
+            "type": "string",
+            "example": "chung.nguyen"
+          },
+          "password": {
+            "type": "string",
+            "example": "123123123"
+          },
+          "name": {
+            "type": "string",
+            "example": "Chung Nguyen"
+          },
+          "role": {
+            "type": "string",
+            "description": "Employee/Doctor/Medical Technologist",
+            "example": "Employee",
+            "enum": ["Doctor", "Medical Technologist", "Employee"]
+          },
+          "avatar": {
+            "type": "string",
+            "example": "http://example.png"
+          },
+          "info": {
+            "type": "object",
+            "example": {
+              "age": 22,
+              "department": "neurology"
+            }
+          }
+        },
+        "xml": {
+          "name": "order"
+        }
+      },
+      "HealthcareRecord": {
+        "type": "object",
+        "properties": {
+          "patient": {
+            "type": "string",
+            "example": "6424557ecae8ac7ca40072c6"
+          },
+          "doctor": {
+            "type": "string",
+            "example": "6424451830c0ce5741ba0013"
+          },
+          "department": {
+            "type": "string",
+            "example": "Phong kham noi"
+          },
+          "info": {
+            "type": "object"
+          },
+          "treatment": {
+            "type": "object"
+          }
+        }
+      },
+      "Patient": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "String",
+            "example": "Nguyen Quang Chung"
+          },
+          "phoneNumber": {
+            "type": "String",
+            "example": "113"
+          },
+          "idCard": {
+            "type": "String",
+            "example": "113"
+          },
+          "info": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "requestBodies": {},
+    "securitySchemes": {
+      "bearerAuth": {
+        "name": "Authorization",
+        "in": "header",
+        "type": "apiKey",
+        "description": "Enter the token with the `Bearer: ` prefix, e.g. `Bearer abcde12345`"
+      }
+    }
+  },
+  "security": [{ "bearerAuth": [] }]
+}

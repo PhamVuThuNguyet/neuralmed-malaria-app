@@ -1,4 +1,4 @@
-import styles from "../../styles/ImageList/imagelist.module.scss";
+import styles from "../../../../styles/Diagnosis/imagelist.module.scss";
 
 export default function ImageItem(props) {
     return (

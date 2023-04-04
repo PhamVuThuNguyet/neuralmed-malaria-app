@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const medicalSchema = new Schema(
+const healthRecordSchema = new Schema(
   {
     patient: { type: Schema.Types.ObjectId, ref: 'Patient', require: true },
     doctor: { type: Schema.Types.ObjectId, ref: 'User', require: true },
+    department: { type: String, required: true },
     info: { type: Schema.Types.Mixed },
     treatment: { type: Schema.Types.Mixed }
   },
@@ -13,4 +14,4 @@ const medicalSchema = new Schema(
   }
 );
 
-module.exports = medicalSchema;
+module.exports = healthRecordSchema;

@@ -4,7 +4,8 @@ const MESSAGES = {
   USER_NOT_EXIST: 'User is not exist',
   WRONG_PASSWORD: 'Password is not correct',
   PATIENT_EXISTED: 'Patient has been already existed',
-  PATIENT_NOT_EXIST: 'Patient is not exist'
+  PATIENT_NOT_EXIST: 'Patient is not exist',
+  RECORD_NOT_EXIST: 'Health Record is not exist'
   
 }
 
