@@ -18,7 +18,7 @@
       "description": "API for admin"
     },
     {
-      "name": "medical",
+      "name": "health-records",
       "description": "API for healthcare record"
     },
     {
@@ -83,11 +83,21 @@
       }
     },
     "/health-records": {
+      "get": {
+        "tags": ["health-records"],
+        "summary": "Get all healthcare record",
+        "description": "Get all healthcare record",
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      },
       "post": {
-        "tags": ["medical"],
+        "tags": ["health-records"],
         "summary": "Create new healthcare record",
         "description": "Create new healthcare record",
-        "operationId": "createMedical",
+        "operationId": "createHealthcareRecord",
         "requestBody": {
           "description": "Passing healthcare record info",
           "content": {
@@ -107,7 +117,7 @@
     },
     "/health-records/{recordId}": {
       "get": {
-        "tags": ["medical"],
+        "tags": ["health-records"],
         "summary": "Get healthcare record by id",
         "operationId": "getHealthcareRecordById",
         "parameters": [
@@ -129,7 +139,7 @@
         }
       },
       "put": {
-        "tags": ["medical"],
+        "tags": ["health-records"],
         "summary": "Update healthcare record",
         "description": "Update healthcare record",
         "operationId": "updateHealthcareRecord",
@@ -164,7 +174,7 @@
     },
     "/health-records/patient/{patientId}": {
       "get": {
-        "tags": ["medical"],
+        "tags": ["health-records"],
         "parameters": [
           {
             "name": "patientId",
@@ -186,7 +196,7 @@
     },
     "/health-records/patient/{patientId}/latest": {
       "get": {
-        "tags": ["medical"],
+        "tags": ["health-records"],
         "parameters": [
           {
             "name": "patientId",
@@ -337,13 +347,9 @@
       "User": {
         "type": "object",
         "properties": {
-          "code": {
-            "type": "string",
-            "example": "MAL000000"
-          },
           "username": {
             "type": "string",
-            "example": "chung.nguyen"
+            "example": "chung.nguyen_quang"
           },
           "password": {
             "type": "string",
@@ -356,8 +362,8 @@
           "role": {
             "type": "string",
             "description": "Employee/Doctor/Medical Technologist",
-            "example": "Employee",
-            "enum": ["Doctor", "Medical Technologist", "Employee"]
+            "example": "Doctor",
+            "enum": ["Doctor", "Medical Technologist"]
           },
           "avatar": {
             "type": "string",

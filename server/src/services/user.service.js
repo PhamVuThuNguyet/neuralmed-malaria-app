@@ -6,8 +6,8 @@ class UserService {
     return User.create(data);
   }
 
-  findOne(data) {
-    return User.findOne(data);
+  findOne(data, options = {}) {
+    return User.findOne(data, {}, options);
   }
 
 }

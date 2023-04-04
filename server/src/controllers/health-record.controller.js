@@ -3,6 +3,16 @@ const testResultService = require('../services/test-result.service');
 const { MESSAGES } = require('../constants/variables');
 
 class HealthRecordController {
+
+  async index(req, res) {
+    try {
+      const healthRecords = await healthRecordService.findMany();
+      res.json(healthRecords);
+    } catch (error) {
+      res.status(500).send();
+    }
+  }
+
   /**
    * @notice [POST] /api/v1/medicals
    * @param {*} req
@@ -41,9 +51,12 @@ class HealthRecordController {
    */
   async latest(req, res) {
     try {
-      const medical = await healthRecordService.findOne({
-        patient: req.params.patientId,
-      });
+      const medical = await healthRecordService.findOne(
+        {
+          patient: req.params.patientId,
+        },
+        { sort: { createdAt: -1 } }
+      );
       res.json(medical);
     } catch (error) {
       res.status(500).send();
