@@ -18,6 +18,11 @@ export const pages = [
         title: "Dashboard",
     },
     {
+        to: "/admin",
+        icon: <SquaresIcon />,
+        title: "Admin Console",
+    },
+    {
         to: "/diagnosis",
         icon: <SquaresIcon />,
         title: "Diagnosis",
