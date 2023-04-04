@@ -2,9 +2,9 @@ import styles from "../../styles/Diagnosis/diagnosis.module.scss";
 import { images } from "../../data/image-list";
 import { patient } from "../../data/patient-example"
 import ImageList from "./components/ImageList";
-import InfoList from "./components/InforList";
-import EditingCanvas from "../../components/EditingCanvas";
-import ResultTabs from "../../components/ResultTabs";
+import InfoList from "./components/InfoList";
+import EditingCanvas from "./EditingCanvas";
+import ResultTabs from "./ResultTabs";
 
 // Btn icon
 import { ReactComponent as GridIcon } from "../../assets/Grid.svg";
@@ -17,7 +17,7 @@ export default function Diagnosis() {
     setCurrentView(view);
   }
   return (
-    <div className="grid grid-cols-6">
+    <div className={[styles["diagnosis-cont"], "grid","grid-cols-6"].join(" ")}>
       <div className="col-span-1">
         <div className="flex gap-x-4">
           <button onClick={() => {SwitchView("images")}}>

@@ -1,6 +1,10 @@
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-import styles from "../../styles/ResultTabs/result-tabs.module.scss";
+import styles from "../../../styles/Diagnosis/result-tabs.module.scss";
+
+import { ReactComponent as ThumbUp } from "../../../assets/ThumbUp.svg";
+import { ReactComponent as ThumbDown } from "../../../assets/ThumbDown.svg";
+import { ReactComponent as Feedback } from "../../../assets/Feedback.svg";
 
 export default function ResultTabs(props) {
     return (
@@ -43,19 +47,18 @@ export default function ResultTabs(props) {
                     </p>
                 </div>
                 <div className={[styles["res-desc"], "mb-5", "max-w-2xl"].join(" ")}>
-                    {/* TODO: replace with value */}
                     <p>
                         <span className={styles["span-green"]}>Rate the AI's suggestion for this scan</span>
                     </p>
                     <div className={["flex", "mt-5", "justify-between", styles["btn-cont"]].join(" ")}>
-                        <button className='shadow-xl'>
-                            Good
+                        <button>
+                            <ThumbUp className="inline-block"/> <span>Good</span>
                         </button>
-                        <button className='shadow-xl'>
-                            Not good
+                        <button>
+                            <ThumbDown className="inline-block"/> <span>Not good</span>
                         </button>
-                        <button className='shadow-xl'>
-                            Feedback
+                        <button>
+                            <Feedback className="inline-block"/> <span>Feedback</span>
                         </button>
                     </div>
                 </div>
