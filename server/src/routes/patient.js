@@ -5,7 +5,7 @@ const { authenticateUser } = require('../middlewares/authentication.middleware')
 const { authorizeEmployee } = require('../middlewares/authorization.middleware');
 
 router.get('/:idCard', authenticateUser, patientController.show);
-router.post('/', authenticateUser, authorizeEmployee, patientController.create);
+router.post('/', authenticateUser, patientController.create);
 router.put('/:patientId', authenticateUser, patientController.update);
 
 module.exports = router;
