@@ -10,33 +10,39 @@ export default function EditingCanvas(props) {
   const [startY, setStartY] = useState(null);
   const [canvas, setCanvas] = useState(null);
   const [ctx, setCtx] = useState(null);
+  const [image, setImage] = useState(new Image());
 
   useEffect(() => {
     const canvas = canvasRef.current;
     setCanvas(canvas);
     const ctx = canvas.getContext("2d");
     setCtx(ctx);
+    image.src = props.image;
+    image.onload = () => {
+      //reset
+      setIsDrawing(false);
+      setCoordinates([]);
 
-    const img = new Image();
-    img.src = props.image;
-    img.onload = () => {
-      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      canvas.width = image.naturalWidth;
+      canvas.height = image.naturalHeight;
+      ctx.drawImage(image, 0, 0);
     };
   }, [props.image]);
 
   function drawImageToCanvas() {
-    const img = new Image();
-    img.src = props.image;
-    img.onload = () => {
-      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-    };
+
+    if(image===null || image === undefined) return;
+    ctx.drawImage(
+      image,
+      0,
+      0
+    )
   }
 
   function startDraw(e) {
     const BB = canvas.getBoundingClientRect();
-
-    const startx = e.clientX - BB.left;
-    const starty = e.clientY - BB.top;
+    const startx = (e.clientX - BB.left);
+    const starty = (e.clientY - BB.top);
 
     setStartX(startx);
     setStartY(starty);
@@ -74,7 +80,7 @@ export default function EditingCanvas(props) {
     const width = endX - startX;
     const height = endY - startY;
 
-    ctx.lineWidth = 1;
+    ctx.lineWidth = 5;
     ctx.strokeStyle = "#0fa";
     ctx.strokeRect(startX, startY, width, height);
     ctx.fillStyle = "#0fa";
@@ -107,15 +113,17 @@ export default function EditingCanvas(props) {
   return (
     <>
       <div className={styles.container}>
-        <p className={styles.title}>Image 1</p>
-        <canvas
-          id="main-canvas"
-          ref={canvasRef}
-          className={styles["main-canvas"]}
-          onMouseDown={startDraw}
-          onMouseUp={stopDraw}
-          onMouseMove={drawing}
-        ></canvas>
+        <p className={styles["canvas-title"]}>Image 1</p>
+        <div className={styles["canvas-cont"]}>
+          <canvas
+            id="main-canvas"
+            ref={canvasRef}
+            className={styles["main-canvas"]}
+            onMouseDown={startDraw}
+            onMouseUp={stopDraw}
+            onMouseMove={drawing}
+          ></canvas>
+        </div>
       </div>
     </>
   );
