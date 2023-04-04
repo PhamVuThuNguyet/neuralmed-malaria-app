@@ -1,29 +1,27 @@
 import styles from "../../styles/SideBar/sidebar-item.module.scss";
-import { useLocation } from "react-router-dom";
+import { Pathname } from "../../utils/get-location";
 export default function SidebarItem(props) {
-  const location = useLocation();
+  const pathname = Pathname();
   return (
     <>
       <div
         className={[
           "flex gap-6",
-          location.pathname === props.to
+          pathname === props.to
             ? styles["active-container"]
             : styles["container"],
         ].join(" ")}
       >
         <div
           className={
-            location.pathname === props.to ? styles["active-icon"] : styles.icon
+            pathname === props.to ? styles["active-icon"] : styles.icon
           }
         >
           {props.icon}
         </div>
         <div
           className={
-            location.pathname === props.to
-              ? styles["active-title"]
-              : styles.title
+            pathname === props.to ? styles["active-title"] : styles.title
           }
         >
           {props.title}

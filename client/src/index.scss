@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind base;
 @tailwind components;
@@ -11,6 +13,10 @@
   --color-dark-gray: #252525;
   --color-orange: #ff6b00;
   --color-red: #ec1010;
+  --color-light-gray: #858585;
+  --color-purple: #e335ff;
+  --color-yellow: #FFD600;
+  --color-green: #C4FFA8;
 }
 
 html,

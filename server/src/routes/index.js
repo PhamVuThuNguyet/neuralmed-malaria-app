@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const doctorRoutes = require('./doctor');
 const authRoutes = require('./auth');
 const adminRoutes = require('./admin');
 const patientRoutes = require('./patient');
-const medicalRoutes = require('./medical');
+const healthRecordRoutes = require('./health-record');
+const testResultRoutes = require('./test-result');
 
 const defaultRoutes = [
   {
@@ -16,16 +16,16 @@ const defaultRoutes = [
     routes: authRoutes,
   },
   {
-    path: '/doctors',
-    routes: doctorRoutes,
-  },
-  {
     path: '/patients',
     routes: patientRoutes
   },
   {
-    path: '/medicals',
-    routes: medicalRoutes
+    path: '/health-records',
+    routes: healthRecordRoutes
+  },
+  {
+    path: '/test-results',
+    routes: testResultRoutes
   }
 ];
 
