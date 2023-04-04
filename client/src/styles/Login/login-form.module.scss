@@ -1,0 +1,109 @@
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-bg) !important;
+
+  button {
+    width: 100% !important;
+    border-radius: 0px !important;
+    box-shadow: none;
+    color: var(--color-blue);
+  }
+  span {
+    font-weight: 700;
+    font-family: Montserrat;
+    font-size: 1.2rem;
+  }
+}
+
+.forgot-pw {
+  color: var(--color-gray);
+  width: 100%;
+  text-align: right;
+  font-size: 1.2rem;
+  &:hover {
+    color: var(--color-light-gray)
+  }
+}
+
+.form__container {
+  background-color: rgb(37, 37, 37);
+  margin-left: 2rem;
+  min-width: calc(100vw*0.3);
+  border-radius: 10px;
+  padding: 9rem 6rem 13rem 6rem;
+  background-image: url("../../assets/LoginFormPattern.svg");
+  background-repeat: no-repeat;
+  form {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2rem;
+  }
+}
+
+.summary__items__container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.form__label__text {
+  font-family: Montserrat;
+  font-size: 2rem;
+  font-weight: 500;
+  color: white;
+}
+
+.input {
+  border-color: rgb(37, 37, 37);
+  border-radius: 0rem;
+  color: white;
+  background-color: rgb(30, 30, 30);
+  padding: 1.5rem 1rem;
+}
+
+.password {
+  input {
+    background-color: rgb(30, 30, 30);
+    border-color: rgb(133, 133, 133);
+    color: white;
+  }
+
+  svg {
+    color: rgb(133, 133, 133);
+  }
+
+  border-color: rgb(37, 37, 37);
+  border-radius: 0rem;
+  background-color: rgb(30, 30, 30);
+  width: 100%;
+  padding: 1.5rem 1rem;
+}
+
+.title {
+  font-family: Montserrat;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: white;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+}
+
+::placeholder {
+  color: rgb(133, 133, 133) !important;
+  opacity: 1 !important;
+  /* Chrome and Firefox */
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: rgb(133, 133, 133) !important;
+  opacity: 1 !important;
+}

@@ -5,6 +5,7 @@ import Dashboard from "./pages/Dashboard";
 import AdminConsole from "./pages/AdminConsole";
 import Diagnosis from "./pages/Diagnosis"
 
+import Login from "./pages/Login";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import { Pathname } from "./utils/get-location";
@@ -31,7 +32,7 @@ function App() {
         <Route path="/admin" element={<AdminConsole />} />
         <Route path="/diagnosis" element={<Diagnosis />} />
         <Route path="/importdataset" element={<ImportData/>} />
-
+        <Route path="/login" element={<Login/>} />
       </Routes>
     </MainLayout>
   );
