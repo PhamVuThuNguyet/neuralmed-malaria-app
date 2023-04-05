@@ -1,4 +1,7 @@
+require('dotenv').config();
+
 const testResultService = require('../services/test-result.service');
+const cloudinary = require('../config/cloudinary.cfg')
 
 class TestResultController {
 
@@ -19,6 +22,23 @@ class TestResultController {
       res.status(500).send();
     }
   }
+
+  /**
+   * @notice [POST] /api/v1/upload
+   * @param {*} req
+   * @param {*} res
+   */
+  async upload(req, res) {
+    try {
+      const fileStr = req.body.data;
+      const uploadResponse = await cloudinary.uploader.upload(fileStr, {folder: "NeuralMed"});
+      console.log(uploadResponse);
+      res.json({ msg: `Uploaded Successfully to ${uploadResponse.url}` });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ err: err });
+    }
+  };
 }
 
 module.exports = new TestResultController();
