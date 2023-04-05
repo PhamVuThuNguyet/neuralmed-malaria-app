@@ -12,7 +12,7 @@ export const images = [
     {
         id: 3,
         name: "Image 1",
-        url: "https://upload.wikimedia.org/wikipedia/commons/0/02/Mature_Plasmodium_malariae_schizont_PHIL_2715_lores.jpg"
+        url: "https://www.sciencenews.org/wp-content/uploads/2020/05/051320_JB_malaria_feat-1028x579.jpg"
     },
     {
         id: 4,

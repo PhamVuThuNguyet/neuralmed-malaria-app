@@ -14,6 +14,9 @@
   color: white;
   margin-left: 1.5rem;
   margin-top: 0.5rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .total{
   font-family: Montserrat;
