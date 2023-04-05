@@ -8,7 +8,7 @@ import api from "../../../api";
 import styles from "../../../styles/Login/login-form.module.scss";
 import { setUserData } from "../../../store/users/reducer.js";
 import { useDispatch } from 'react-redux';
-import api from "../../../api/api";
+
 const LoginForm = () => {
   const [form] = Form.useForm();
   const navigate = useNavigate();
