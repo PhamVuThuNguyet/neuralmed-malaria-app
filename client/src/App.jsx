@@ -12,6 +12,8 @@ import { Pathname } from "./utils/get-location";
 function App() {
   const header = () => {
     switch (Pathname()) {
+      case "/admin":
+        return "Admin Console";
       case "/allrecords":
         return "All Records";
       case "/dashboard":
