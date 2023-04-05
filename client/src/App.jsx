@@ -4,8 +4,7 @@ import AllRecords from "./pages/AllRecords";
 import ImportData from "./pages/ImportData";
 import Dashboard from "./pages/Dashboard";
 import AdminConsole from "./pages/AdminConsole";
-import Diagnosis from "./pages/Diagnosis";
-
+import Diagnosis from "./pages/Diagnosis"
 import Login from "./pages/Login";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
@@ -15,6 +14,8 @@ import socket from "./config/socket";
 function App() {
   const header = () => {
     switch (Pathname()) {
+      case "/admin":
+        return "Admin Console";
       case "/allrecords":
         return "All Records";
       case "/dashboard":
@@ -53,7 +54,7 @@ function App() {
         <Route path="/admin" element={<AdminConsole />} />
         <Route path="/diagnosis" element={<Diagnosis />} />
         <Route path="/importdataset" element={<ImportData/>} />
-        <Route path="/login" element={<Login/>} />
+        <Route path="/auth" element={<Login/>} />
       </Routes>
     </MainLayout>
   );
