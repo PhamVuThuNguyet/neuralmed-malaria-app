@@ -93,11 +93,12 @@
         background-color: transparent;
         border: 2px solid var(--color-gray);
         font-size: 2rem;
-        line-height: 1.25rem;
+        line-height: 2rem;
         width: 100%;
         padding: 1rem;
         font-weight: normal;
         color: #fff;
+        color-scheme: dark;
         border-radius: 10px;
         &:focus {
             border: 2px solid var(--color-blue);
