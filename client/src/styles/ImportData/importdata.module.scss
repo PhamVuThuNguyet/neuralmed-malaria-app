@@ -52,7 +52,7 @@
 .next-button {
     padding: 2rem 7rem;
     background-color: var(--color-blue);
-    border: 1px;
+    border: 2px;
     color: #fff;
     transition: 0.25s;
     &:hover {
@@ -62,8 +62,8 @@
 
 .cancel-button {
     padding: 2rem 7rem;
-    background-color: #000;
-    border: 1px solid var(--color-gray);
+    background-color: var(--color-bg);
+    border: 2px solid var(--color-gray);
     color: #fff;
     transition: 0.25s;
     &:hover {
@@ -78,6 +78,7 @@
         font-size: 2rem;
     }
     label {
+        font-family: Montserrat;
         color: var(--color-blue);
         display: block;
         margin-bottom: 0.5rem;
@@ -87,6 +88,7 @@
         margin-bottom: 1rem;
     }
     input {
+        font-family: 'Open Sans', sans-serif;
         box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
         background-color: transparent;
         border: 2px solid var(--color-gray);

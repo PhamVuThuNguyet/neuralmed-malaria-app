@@ -47,7 +47,7 @@ export default function ImportData() {
                 <div className={styles["form-cont"]}>
                     <form>
                         <div className="mb-6">
-                            <label htmlFor="id">ID</label>
+                            <label htmlFor="id">Citizen ID</label>
                             <input type="text" name="id" id="id" required />
                         </div>
                         <div className="mb-6">

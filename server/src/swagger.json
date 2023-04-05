@@ -18,12 +18,16 @@
       "description": "API for admin"
     },
     {
-      "name": "medical",
+      "name": "health-records",
       "description": "API for healthcare record"
     },
     {
       "name": "patient",
       "description": "API for patient"
+    },
+    {
+      "name": "test-result",
+      "description": "API for get test results"
     }
   ],
   "paths": {
@@ -79,11 +83,21 @@
       }
     },
     "/health-records": {
+      "get": {
+        "tags": ["health-records"],
+        "summary": "Get all healthcare record",
+        "description": "Get all healthcare record",
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      },
       "post": {
-        "tags": ["medical"],
+        "tags": ["health-records"],
         "summary": "Create new healthcare record",
         "description": "Create new healthcare record",
-        "operationId": "createMedical",
+        "operationId": "createHealthcareRecord",
         "requestBody": {
           "description": "Passing healthcare record info",
           "content": {
@@ -102,8 +116,30 @@
       }
     },
     "/health-records/{recordId}": {
+      "get": {
+        "tags": ["health-records"],
+        "summary": "Get healthcare record by id",
+        "operationId": "getHealthcareRecordById",
+        "parameters": [
+          {
+            "name": "recordId",
+            "in": "path",
+            "description": "ID of record",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "642ae74558856d9fb4a8cfcb"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      },
       "put": {
-        "tags": ["medical"],
+        "tags": ["health-records"],
         "summary": "Update healthcare record",
         "description": "Update healthcare record",
         "operationId": "updateHealthcareRecord",
@@ -115,7 +151,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "example": "6428512d510aacca13a0a3a4"
+              "example": "642ae74558856d9fb4a8cfcb"
             }
           }
         ],
@@ -124,7 +160,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/HealthcareRecord"
+                "$ref": "#/components/schemas/UpdateHealthRecord"
               }
             }
           }
@@ -138,7 +174,7 @@
     },
     "/health-records/patient/{patientId}": {
       "get": {
-        "tags": ["medical"],
+        "tags": ["health-records"],
         "parameters": [
           {
             "name": "patientId",
@@ -160,7 +196,7 @@
     },
     "/health-records/patient/{patientId}/latest": {
       "get": {
-        "tags": ["medical"],
+        "tags": ["health-records"],
         "parameters": [
           {
             "name": "patientId",
@@ -259,6 +295,38 @@
           }
         }
       }
+    },
+    "/test-results": {
+      "get": {
+        "tags": ["test-result"],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      }
+    },
+    "/test-results/{id}": {
+      "get": {
+        "tags": ["test-result"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id of test resulst",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "12312312312312312"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -279,13 +347,9 @@
       "User": {
         "type": "object",
         "properties": {
-          "code": {
-            "type": "string",
-            "example": "MAL000000"
-          },
           "username": {
             "type": "string",
-            "example": "chung.nguyen"
+            "example": "chung.nguyen_quang"
           },
           "password": {
             "type": "string",
@@ -298,8 +362,8 @@
           "role": {
             "type": "string",
             "description": "Employee/Doctor/Medical Technologist",
-            "example": "Employee",
-            "enum": ["Doctor", "Medical Technologist", "Employee"]
+            "example": "Doctor",
+            "enum": ["Doctor", "Medical Technologist"]
           },
           "avatar": {
             "type": "string",
@@ -322,7 +386,7 @@
         "properties": {
           "patient": {
             "type": "string",
-            "example": "6424557ecae8ac7ca40072c6"
+            "example": "642ae9ef544dee961c27bedd"
           },
           "doctor": {
             "type": "string",
@@ -331,6 +395,18 @@
           "department": {
             "type": "string",
             "example": "Phong kham noi"
+          }
+        }
+      },
+      "UpdateHealthRecord": {
+        "type": "object",
+        "properties": {
+          "testResult": {
+            "type": "object",
+            "example": {
+              "isPositive": true,
+              "url": ["result1.jpg", "result2.jgp"]
+            }
           },
           "info": {
             "type": "object"
@@ -354,6 +430,10 @@
           "idCard": {
             "type": "String",
             "example": "113"
+          },
+          "birth": {
+            "type": "Number",
+            "example": 2001
           },
           "info": {
             "type": "object"

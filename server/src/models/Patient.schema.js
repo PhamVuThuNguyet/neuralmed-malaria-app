@@ -5,6 +5,7 @@ const patientSchema = new Schema({
   name: { type: String, required: true, indexed: true },
   phoneNumber: { type: String },
   idCard: { type: String },
+  birth: { type: Number },
   info: { type: Schema.Types.Mixed },
 }, {
   timestamps: true
