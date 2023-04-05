@@ -2,7 +2,7 @@ import { React } from "react";
 import { Button, Input, Form, DatePicker } from "antd";
 import { Link } from "react-router-dom";
 import { ReactComponent as NeuralMed } from "../../../assets/NeuralMed.svg";
-import axios from 'axios';
+import api from "../../../api";
 import styles from "../../../styles/Login/login-form.module.scss";
 
 const LoginForm = () => {
@@ -19,7 +19,7 @@ const LoginForm = () => {
   ];
 
   const onFinish = (values) => {
-    axios.post('/api/submit-form', values)
+    api.post('/auth/login', values)
       .then(response => {
         console.log('Form submitted successfully');
       })

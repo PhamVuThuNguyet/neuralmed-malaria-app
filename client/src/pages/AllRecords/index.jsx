@@ -1,12 +1,39 @@
-import { React, useState, useRef } from "react";
+import { React, useState, useRef, useEffect } from "react";
 import { Button, Table, ConfigProvider, theme, Input, Space } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import Highlighter from "react-highlight-words";
-import { data } from "../../data/all-records";
 import styles from "../../styles/AllRecords/allrecords.module.scss";
+import api from "../../api";
+import { GetDateFrom } from "../../utils/get-date";
+
 export default function AllRecords() {
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [tableData, setTableData] = useState(null);
+
+  const apiConfig = {
+    //TODO: token from login
+    headers: { Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDI0NDI2ODU1OWE2OWVhZTdlMDgzN2UiLCJyb2xlIjoiQWRtaW4iLCJpYXQiOjE2ODA3MDQwNjgsImV4cCI6MTY4MDc5MDQ2OH0.8e-t6pM6cbjRVz6o117oD_TeHFQWnwu6U7DC7trk7Hs`}
+  }
+
+  const getData = async () => {
+    const res = await api.get("/health-records", apiConfig);
+    const data = res.data.map(({_id, patient, doctor, department, createdAt}) => ({
+      key: _id,
+      id: _id,
+      name: patient.name,
+      phone: patient.phoneNumber,
+      date: GetDateFrom(createdAt),
+      doctor: doctor.name,
+      department: department,
+    }));
+    setTableData(data);
+  }
+
+  useEffect(() => {
+    getData();
+  },[loading]);
+
   const start = () => {
     setLoading(true);
     // ajax request after empty completing
@@ -209,7 +236,7 @@ export default function AllRecords() {
           <Table
             rowSelection={rowSelection}
             columns={columns}
-            dataSource={data}
+            dataSource={tableData}
             pagination={{
               pageSize: 10,
             }}
