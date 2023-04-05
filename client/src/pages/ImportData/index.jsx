@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import ImportButton from "./components/import-button";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Diagnosis from "../Diagnosis";
 import { useNavigate } from "react-router-dom";
 
 export default function ImportData() {
@@ -43,14 +42,19 @@ export default function ImportData() {
     const data = new FormData();
     data.append("image", selectedFiles[0]);
 
+    const formData = new FormData(e.target);
+
     axios
-      .post("http://192.168.1.16:5000/detect_objects", data, {
+      .post("http://localhost:5000/detect_objects", data, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       })
       .then((response) => {
-        navigate("/diagnosis", { state: {image: response.data.image} });
+        formData.append("image", response.data.image);
+        const dataFinal = Object.fromEntries(formData.entries());
+        console.log(dataFinal);
+        navigate("/diagnosis", { state: dataFinal });
       })
       .catch((error) => {
         console.error(error);

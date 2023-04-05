@@ -14,7 +14,6 @@ import { ReactComponent as ListIcon } from "../../assets/List.svg";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { useLocation } from "react-router-dom";
-import axios from "axios";
 
 export default function Diagnosis(props) {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -36,12 +35,12 @@ export default function Diagnosis(props) {
       setSelectedImage(image.src);
     };
     image.src = `data:image/png;base64,${image_}`;
-    upload(image.src);
+    // const url = upload(image.src);
   }, [image_]);
 
   const upload = async (image) => {
     const res = await api.post("/test-results/upload", {data: image}, apiConfig);
-    alert(res.data.msg)
+    return res.data.url;
   };
 
 
