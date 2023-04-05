@@ -10,10 +10,23 @@ import ResultTabs from "./components/ResultTabs";
 import { ReactComponent as GridIcon } from "../../assets/Grid.svg";
 import { ReactComponent as ListIcon } from "../../assets/List.svg";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useLocation } from "react-router-dom";
 
-export default function Diagnosis() {
+export default function Diagnosis(props) {
   const [selectedImage, setSelectedImage] = useState(null);
   const [currentView, setCurrentView] = useState("images");
+  const location = useLocation();
+  const image_ = location.state?.image;
+
+  useEffect(() => {
+    console.log(image_);
+    const image = new Image();
+    image.onload = () => {
+      setSelectedImage(image.src);
+    };
+    image.src = `data:image/png;base64,${image_}`;
+    console.log(selectedImage);
+  }, [image_, selectedImage]);
 
   const handleImageClick = (image) => {
     console.log(image);
