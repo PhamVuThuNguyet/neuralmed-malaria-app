@@ -1,5 +1,6 @@
 import styles from "../../../styles/Dashboard/dashboard-chart.module.scss";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import api from "../../../api";
 import {
   Chart as ChartJS,
   ArcElement,
@@ -14,7 +15,37 @@ import {
 
 import { Doughnut, Bar } from "react-chartjs-2";
 
-export default function Chart() {
+export default function Chart(props) {
+
+  const [totalCase, setTotalCase] = useState(0);
+  const [positiveCase, setPositiveCase] = useState(0);
+  const [totalMale, setTotalMale] = useState(0);
+  const [totalFemale, setTotalFemale] = useState(0); 
+
+  const apiConfig = {
+    //TODO: token from login
+    headers: { Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDI0NDI2ODU1OWE2OWVhZTdlMDgzN2UiLCJyb2xlIjoiQWRtaW4iLCJpYXQiOjE2ODA3MDQwNjgsImV4cCI6MTY4MDc5MDQ2OH0.8e-t6pM6cbjRVz6o117oD_TeHFQWnwu6U7DC7trk7Hs`}
+  }
+
+  const getData = async () => {
+    const total_case = await api.get("/patients", apiConfig);
+    const total_records = await api.get("/health-records", apiConfig);
+    setTotalCase(total_case.data.length);
+    let data = await total_records.data.map(({patient, testResult}) => ({
+      id: patient.idCard,
+      posivte: testResult.at(-1).isPositive
+    }));
+    data = data.reverse().filter((value, index, self) =>
+      index === self.findIndex((t) => (
+        t.place === value.place && t.name === value.name
+      )))
+    setPositiveCase(data.length);
+    }
+
+  useEffect(() => {
+    getData();
+  },[]);
+
   const root = document.documentElement;
   const style = getComputedStyle(root);
 
@@ -22,7 +53,7 @@ export default function Chart() {
     labels: ["Positive", "Negative"],
     datasets: [
       {
-        data: [3700, 1000],
+        data: [positiveCase, totalCase - positiveCase],
         backgroundColor: [
           style.getPropertyValue("--color-blue"),
           style.getPropertyValue("--color-orange"),
@@ -66,7 +97,7 @@ export default function Chart() {
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
         ctx.fillText(
-          "1700/2000",
+          `${positiveCase}/${totalCase}`,
           chart.getDatasetMeta(0).data[0].x,
           chart.getDatasetMeta(0).data[0].y
         );

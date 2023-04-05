@@ -44,7 +44,7 @@ export default function ImportData() {
     data.append("image", selectedFiles[0]);
 
     axios
-      .post("http://localhost:5000/detect_objects", data, {
+      .post("http://192.168.1.16:5000/detect_objects", data, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
