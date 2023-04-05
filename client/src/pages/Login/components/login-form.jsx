@@ -3,11 +3,15 @@ import { Button, Input, Form} from "antd";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { ReactComponent as NeuralMed } from "../../../assets/NeuralMed.svg";
-import axios from 'axios';
 import styles from "../../../styles/Login/login-form.module.scss";
-
+import { setUserData } from "../../../store/users/reducer.js";
+import { useDispatch } from 'react-redux';
+import api from "../../../api/api";
 const LoginForm = () => {
   const [form] = Form.useForm();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const formItems = [
     {
       name: "username",
@@ -18,18 +22,25 @@ const LoginForm = () => {
       inputComponent: <Input.Password placeholder="Password" className={styles.password}></Input.Password>
     }
   ];
-  const navigate = useNavigate();
-  
-    // ...
-  
+
   const onFinish = (values) => {
-    axios.post('http://localhost:3001/api/v1/auth/login', values)
+    api.post('/auth/login', values)
       .then(response => {
-        console.log('Form submitted successfully');
-        navigate('/'); // redirect to localhost:3000/
+        alert('Login successfully');
+        const { accessToken, user } = response.data;
+        localStorage.setItem('accessToken', accessToken);
+        dispatch(setUserData(user));
+        navigate('/');
+        localStorage.setItem('accessToken', accessToken);
+        dispatch(setUserData(user));
+        navigate('/');
+     
+        localStorage.setItem('accessToken', accessToken);
+        dispatch(setUserData(user));
+        navigate('/');
       })
       .catch(error => {
-        console.error('Form submission failed:', error);
+        alert('Password is not correct or account does not exsist');
       });
   };
   
