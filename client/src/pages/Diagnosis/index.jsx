@@ -5,6 +5,7 @@ import ImageList from "./components/ImageList";
 import InfoList from "./components/InfoList";
 import EditingCanvas from "./components/EditingCanvas";
 import ResultTabs from "./components/ResultTabs";
+import { Link } from "react-router-dom";
 import api from "../../api";
 
 
@@ -19,7 +20,9 @@ export default function Diagnosis(props) {
   const [selectedImage, setSelectedImage] = useState(null);
   const [currentView, setCurrentView] = useState("images");
   const location = useLocation();
+
   const image_ = location.state?.image;
+  const canvasRef = useRef();
 
   const apiConfig = {
     //TODO: token from login
@@ -39,10 +42,42 @@ export default function Diagnosis(props) {
   }, [image_]);
 
   const upload = async (image) => {
-    const res = await api.post("/test-results/upload", {data: image}, apiConfig);
+    const res = await api.post("/test-results/upload", { data: image }, apiConfig);
     return res.data.url;
   };
 
+  const handleSubmit = async () => {
+    if(location.state === null) {
+      alert("Nothing to POST, try go back to import data");
+      return;
+    }
+    if(selectedImage === null) {
+      alert("No Image");
+      return;
+    }
+
+    const canvas = canvasRef.current;
+    const imageb64 = canvas.toDataURL("image/png");
+    const imgURL = await upload(imageb64);
+
+    const data = {
+      "patient": location.state.id,
+      "doctor": location.state.receive_doc,
+      "department": location.state.receive_dep,
+      "testResult": {
+        "isPositive": true,
+        "url": [
+          imgURL
+        ]
+      }
+    }
+    try {
+      const res = await api.post("/health-records", data, apiConfig)
+    } catch (error) {
+      console.log(error)
+    }
+
+  }
 
   const handleImageClick = (image) => {
     console.log(image);
@@ -84,14 +119,26 @@ export default function Diagnosis(props) {
             <InfoList info={patient} />
           )}
         </div>
-      </div>  
+      </div>
       <div className="col-span-5 p-3">
         <div className="grid grid-rows-5">
           <div className="row-span-3">
-            <EditingCanvas image={selectedImage} />
+            <EditingCanvas image={selectedImage} canvasRef={canvasRef}/>
           </div>
           <div className="row-span-2">
             <ResultTabs />
+            <div className="w-full flex justify-end text-3xl gap-8">
+              <Link to="/">
+                <button className={styles["cancel-button"]}>CANCEL</button>
+              </Link>
+              <button
+                type="submit"
+                className={styles["next-button"]}
+                onClick={()=>handleSubmit()}
+              >
+                NEXT
+              </button>
+            </div>
           </div>
         </div>
       </div>

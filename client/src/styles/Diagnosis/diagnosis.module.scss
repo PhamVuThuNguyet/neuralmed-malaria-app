@@ -1,3 +1,25 @@
 .diagnosis-cont {
     font-family: 'Open Sans', sans-serif;
 }
+.next-button {
+    padding: 2rem 7rem;
+    background-color: var(--color-blue);
+    border: 2px;
+    color: #fff;
+    transition: 0.25s;
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+.cancel-button {
+    padding: 2rem 7rem;
+    background-color: var(--color-bg);
+    border: 2px solid var(--color-gray);
+    color: #fff;
+    transition: 0.25s;
+    &:hover {
+        transform: scale(1.1);
+        background-color: var(--color-red);
+        border: 1px solid var(--color-red);
+    }
+}
