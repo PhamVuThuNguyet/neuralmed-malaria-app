@@ -405,6 +405,18 @@
           "department": {
             "type": "string",
             "example": "Phong kham noi"
+          }
+        }
+      },
+      "UpdateHealthRecord": {
+        "type": "object",
+        "properties": {
+          "testResult": {
+            "type": "object",
+            "example": {
+              "isPositive": true,
+              "url": ["result1.jpg", "result2.jgp"]
+            }
           },
           "testResult": {
             "type": "object",

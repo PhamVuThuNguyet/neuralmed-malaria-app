@@ -3,7 +3,6 @@ const testResultService = require('../services/test-result.service');
 const { MESSAGES } = require('../constants/variables');
 const { sendSMS } = require('../utils/twillo.utils');
 
-
 class HealthRecordController {
 
   async index(req, res) {
