@@ -53,7 +53,9 @@
   background-color: rgb(37, 37, 37);
   width: 100%;
   padding: 1.5rem 1rem;
-  color: white;
+  svg{
+    color: var(--color-blue);
+  }
 }
 
 .title {

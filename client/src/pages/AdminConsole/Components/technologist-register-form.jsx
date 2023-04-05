@@ -3,11 +3,11 @@ import { Button, Input, Form, DatePicker } from "antd";
 import axios from 'axios';
 import styles from "../../../styles/AdminConsole/adminconsole-doctor-register.module.scss";
 
-const DoctorRegister = () => {
+const TechnologistRegister = () => {
   const [form] = Form.useForm();
   const formItems = [
     {
-      label: "ID (Auto)",
+      label: "ID",
       name: "id",
       inputComponent: <Input className={styles.input}></Input>
     },
@@ -22,20 +22,15 @@ const DoctorRegister = () => {
       inputComponent: <DatePicker className={styles.datepicker} format="YYYY-MM-DD" />
     },
     {
-      label: "Special",
-      name: "special",
-      inputComponent: <Input className={styles.input}></Input>
-    },
-    {
-      label: "Year of experience",
-      name: "year of experience",
-      inputComponent: <Input className={styles.input}></Input>
-    },
-    {
       label: "Department",
       name: "department",
       inputComponent: <Input className={styles.input}></Input>
-    }
+    },
+    {
+        label: "Special",
+        name: "special",
+        inputComponent: <Input className={styles.input}></Input>
+    },
   ];
 
   const onFinish = (values) => {
@@ -76,4 +71,4 @@ const DoctorRegister = () => {
   );
 };
 
-export default DoctorRegister;
+export default TechnologistRegister;

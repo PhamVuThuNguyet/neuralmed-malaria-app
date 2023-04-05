@@ -7,10 +7,12 @@ import EditingCanvas from "./components/EditingCanvas";
 import ResultTabs from "./components/ResultTabs";
 import api from "../../api";
 
+
 // Btn icon
 import { ReactComponent as GridIcon } from "../../assets/Grid.svg";
 import { ReactComponent as ListIcon } from "../../assets/List.svg";
 import { useCallback, useEffect, useRef, useState } from "react";
+
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 
@@ -41,6 +43,7 @@ export default function Diagnosis(props) {
     const res = await api.post("/test-results/upload", {data: image}, apiConfig);
     alert(res.data.msg)
   };
+
 
   const handleImageClick = (image) => {
     console.log(image);
@@ -82,7 +85,7 @@ export default function Diagnosis(props) {
             <InfoList info={patient} />
           )}
         </div>
-      </div>
+      </div>  
       <div className="col-span-5 p-3">
         <div className="grid grid-rows-5">
           <div className="row-span-3">

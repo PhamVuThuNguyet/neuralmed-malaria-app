@@ -4,6 +4,8 @@ import { data } from "../../data/admin-console";
 import DoctorRegister from "./Components/doctor-register-form";
 import styles from "../../styles/AdminConsole/adminconsole-doctor-register.module.scss";
 import DropMenu from "./Components/drop-down-menu";
+import TechnologistRegister from "./Components/technologist-register-form";
+import EmployeeRegister from "./Components/employee-register-form";
 export default function AdminConsole() {
   return (
     <div className="grid grid-cols-2">

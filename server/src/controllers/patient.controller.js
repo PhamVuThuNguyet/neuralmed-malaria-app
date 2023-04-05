@@ -2,6 +2,16 @@ const patientService = require('../services/patient.service');
 const { MESSAGES } = require('../constants/variables');
 
 class PatientController {
+
+  async index(req, res) {
+    try {
+      const patients = await patientService.findMany();
+      res.json(patients);
+    } catch (error) {
+      res.status(500).send();
+    }
+  }
+
   /**
    * @notice [POST] /api/v1/patients
    * @dev Only employee can call

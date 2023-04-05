@@ -1,6 +1,7 @@
 const healthRecordService = require('../services/health-record.service');
 const testResultService = require('../services/test-result.service');
 const { MESSAGES } = require('../constants/variables');
+const { sendSMS } = require('../utils/twillo.utils');
 
 class HealthRecordController {
 
@@ -20,8 +21,36 @@ class HealthRecordController {
    */
   async create(req, res) {
     try {
-      const medical = await healthRecordService.createOne(req.body);
-      res.json(medical);
+      const { testResult: inputTestResult,...rest } = req.body;
+      const medical = await healthRecordService.createOne(rest);
+      const oldMedical = await healthRecordService.findOne({ _id: medical._id });
+
+      const testResult = [];
+      if (inputTestResult) {
+        const createdTestResult = await testResultService.createOne({
+          healthRecord: medical._id,
+          ...inputTestResult,
+        });
+
+        testResult.push(createdTestResult._id);
+
+        io.to(listSocketUser[oldMedical.doctor._id]).emit('test-result', {
+          patient: oldMedical.patient.name,
+          result: inputTestResult
+        });
+
+        const msg = 'Your test result has been completed. Please visit and discuss with doctor';
+        const to = oldMedical.patient?.phoneNumber;
+        if(to) {
+          sendSMS(msg, to);
+        }
+      }
+
+      const newRecord = await healthRecordService.updateById(medical._id, {
+        testResult,
+      });
+      res.json(newRecord);
+
     } catch (error) {
       console.log(error);
       res.status(500).send();
@@ -93,6 +122,17 @@ class HealthRecordController {
         });
 
         testResult.push(createdTestResult._id);
+
+        io.to(listSocketUser[oldMedical.doctor._id]).emit('test-result', {
+          patient: oldMedical.patient.name,
+          result: req.body.testResult
+        });
+
+        const msg = 'Your test result has been completed. Please visit and discuss with doctor';
+        const to = oldMedical.patient?.phoneNumber;
+        if(to) {
+          sendSMS(msg, to);
+        }
       }
 
       const info = { ...oldMedical.info, ...req.body.info };
