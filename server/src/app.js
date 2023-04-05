@@ -21,8 +21,9 @@ if (process.env.NODE_ENV != 'test') {
   app.use(morgan('tiny'));
 }
 
-app.use(cors({ original: '*' }));
-app.use(express.json());
+app.use(cors({ original: "*" }));
+app.use(express.json({limit: '50mb'}));
+
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/v1', routes);
