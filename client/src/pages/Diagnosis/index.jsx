@@ -26,7 +26,7 @@ export default function Diagnosis(props) {
     };
     image.src = `data:image/png;base64,${image_}`;
     console.log(selectedImage);
-  }, [image_, selectedImage]);
+  }, [image_]);
 
   const handleImageClick = (image) => {
     console.log(image);
