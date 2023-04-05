@@ -37,6 +37,11 @@
 }
 
 .input {
+  input {
+    background-color: rgb(37, 37, 37);
+    border-color: rgb(133, 133, 133);
+    color: white;
+  }
   border-color: rgb(53, 158, 255);
   border-radius: 10px;
   border-width: 1px;

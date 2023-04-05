@@ -1,19 +1,41 @@
 import { React } from "react";
-import { Button, Input, Form, DatePicker } from "antd";
-import axios from 'axios';
+import { Button, Input, Form, DatePicker, Select } from "antd";
 import styles from "../../../styles/AdminConsole/adminconsole-doctor-register.module.scss";
+import api from "../../../api/api";
 
 const DoctorRegister = () => {
+  const accessToken = localStorage.getItem('accessToken');
+  const apiConfig = {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      "Content-Type": "application/json",
+    },
+  };
   const [form] = Form.useForm();
   const formItems = [
     {
-      label: "ID (Auto)",
-      name: "id",
+      label: "Username",
+      name: "username",
       inputComponent: <Input className={styles.input}></Input>
     },
     {
-      label: "Full name",
-      name: "fullname",
+      label: "Password",
+      name: "password",
+      inputComponent: <Input.Password className={styles.input}></Input.Password>
+    },
+    {
+      label: "Name",
+      name: "name",
+      inputComponent: <Input className={styles.input}></Input>
+    },
+    {
+      label: "Role",
+      name: "role",
+      inputComponent:  <Input className={styles.input}></Input>
+    },
+    {
+      label: "Gender",
+      name: "gender",
       inputComponent: <Input className={styles.input}></Input>
     },
     {
@@ -22,13 +44,8 @@ const DoctorRegister = () => {
       inputComponent: <DatePicker className={styles.datepicker} format="YYYY-MM-DD" />
     },
     {
-      label: "Special",
-      name: "special",
-      inputComponent: <Input className={styles.input}></Input>
-    },
-    {
-      label: "Year of experience",
-      name: "year of experience",
+      label: "age",
+      name: "age",
       inputComponent: <Input className={styles.input}></Input>
     },
     {
@@ -39,13 +56,27 @@ const DoctorRegister = () => {
   ];
 
   const onFinish = (values) => {
-    axios.post('http://localhost:3001/api/v1/admin/add-user', values)
-      .then(response => {
-        console.log('Form submitted successfully');
-      })
-      .catch(error => {
-        console.error('Form submission failed:', error);
-      });
+ 
+    const info = {
+       age: values.age,
+       department: values.department,
+       gerder: values.gerder
+    };
+    const user = {
+      username: values.username,
+      password: values.password,
+      name: values.name,
+      role: values.role,
+      info: info
+    }
+    api.post('/admin/add-user', user, apiConfig)
+    .then(response => {
+      alert('Form submitted successfully');
+    })
+    .catch(error => {
+      alert('Form submitted failed');
+    });
+    console.log(values);
   };
 
   return (

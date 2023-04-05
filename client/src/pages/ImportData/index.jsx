@@ -5,10 +5,19 @@ import ImportButton from "./components/import-button";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import api from "../../api";
 
 export default function ImportData() {
+  const apiConfig = {
+    //TODO: token from login
+    headers: {
+      Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDI0NDI2ODU1OWE2OWVhZTdlMDgzN2UiLCJyb2xlIjoiQWRtaW4iLCJpYXQiOjE2ODA3MDQwNjgsImV4cCI6MTY4MDc5MDQ2OH0.8e-t6pM6cbjRVz6o117oD_TeHFQWnwu6U7DC7trk7Hs`,
+    },
+  };
+
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [preview, setPreview] = useState([]);
+  const [outputValue, setOutputValue] = useState("");
 
   const navigate = useNavigate();
 
@@ -61,6 +70,17 @@ export default function ImportData() {
       });
   };
 
+  const getData = async (value) => {
+    const res = await api.get(`/patients/${value}`, apiConfig);
+    return res;
+  };
+
+  const handleInputChange = async (event) => {
+    const value = event.target.value;
+    const result = await getData(value);
+    setOutputValue(result);
+  };
+
   return (
     <>
       <div className="w-full">
@@ -75,7 +95,13 @@ export default function ImportData() {
           <form id="import-form" onSubmit={submitHandle}>
             <div className="mb-6">
               <label htmlFor="id">Citizen ID</label>
-              <input type="text" name="id" id="id" required />
+              <input
+                type="text"
+                name="id"
+                id="id"
+                required
+                onBlur={handleInputChange}
+              />
             </div>
             <div className="mb-6">
               <label htmlFor="receive_dep">Receive Department</label>
@@ -87,15 +113,29 @@ export default function ImportData() {
             </div>
             <div className="mb-6">
               <label htmlFor="datetime">Datetime</label>
-              <input type="date" name="datetime" id="datetime" required />
+              <input
+                type="date"
+                name="datetime"
+                id="datetime"
+                readOnly={true}
+                defaultValue={new Date(new Date().getTime())
+                  .toISOString()
+                  .substr(0, 10)}
+              />
             </div>
             <div className="mb-6">
               <label htmlFor="age">Age</label>
-              <input type="number" name="age" id="age" required />
+              <input
+                type="number"
+                name="age"
+                id="age"
+                readOnly={true}
+                value={new Date().getFullYear() - outputValue.data?.birth}
+              />
             </div>
             <div className="mb-6">
               <label htmlFor="address">Address</label>
-              <input type="text" name="address" id="address" required />
+              <input type="text" name="address" id="address" readOnly={true} />
             </div>
           </form>
         </div>
