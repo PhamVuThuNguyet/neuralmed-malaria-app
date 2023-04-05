@@ -3,11 +3,15 @@ const { HealthRecord } = require('../models');
 class HealthRecordService {
 
   findMany(data) {
-    return HealthRecord.find(data).populate('doctor', '-password').populate('patient');
+    return HealthRecord.find(data).populate('doctor', '-password').populate('patient').populate('testResult');
   }
 
-  findOne(data) {
-    return HealthRecord.findOne(data).populate('doctor', '-password').populate('patient')
+  findOne(data, options = {}) {
+    return HealthRecord.findOne(data, {} , options).populate('doctor', '-password').populate('patient').populate('testResult')
+  }
+
+  findById(id) {
+    return HealthRecord.findById(id).populate('doctor', '-password').populate('patient').populate('testResult')
   }
 
   createOne(data) {

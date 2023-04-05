@@ -18,13 +18,13 @@ export const pages = [
         title: "Dashboard",
     },
     {
-        to: "/diagnosis",
-        icon: <SquaresIcon />,
-        title: "Diagnosis",
-    },
-    {
         to: "/admin",
         icon: <SquaresIcon />,
         title: "Admin Console",
+    },
+    {
+        to: "/diagnosis",
+        icon: <SquaresIcon />,
+        title: "Diagnosis",
     },
 ];

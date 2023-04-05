@@ -1,5 +1,8 @@
 .canvas-cont {
-    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1210px;
     aspect-ratio: 16/9;
     overflow: scroll;
     border: 2px solid var(--color-gray);

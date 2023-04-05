@@ -2,6 +2,7 @@
     margin-top: 1.5em;
     max-height: 100vh;
     overflow-y: scroll;
+    padding: 3rem;
 
     /* width */
     &::-webkit-scrollbar {
@@ -44,4 +45,5 @@
 .image-title {
     font-size: 2rem;
     font-weight: 300;
+    color: var(--color-light-gray);
 }   

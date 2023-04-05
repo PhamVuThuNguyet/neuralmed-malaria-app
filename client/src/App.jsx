@@ -4,6 +4,7 @@ import ImportData from "./pages/ImportData";
 import Dashboard from "./pages/Dashboard";
 import AdminConsole from "./pages/AdminConsole";
 import Diagnosis from "./pages/Diagnosis"
+
 import Login from "./pages/Login";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
