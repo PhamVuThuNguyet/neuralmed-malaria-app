@@ -5,6 +5,7 @@ export default function EditingCanvas(props) {
   const canvasRef = useRef(null);
   const [isDrawing, setIsDrawing] = useState(false);
   const [coordinates, setCoordinates] = useState([]);
+  const [rmCoordinates, setRmCoordinates] = useState([]);
 
   const [startX, setStartX] = useState(null);
   const [startY, setStartY] = useState(null);
@@ -27,22 +28,17 @@ export default function EditingCanvas(props) {
       canvas.height = image.naturalHeight;
       ctx.drawImage(image, 0, 0);
     };
-  }, [props.image]);
+  }, [props.image, image]);
 
   function drawImageToCanvas() {
-
-    if(image===null || image === undefined) return;
-    ctx.drawImage(
-      image,
-      0,
-      0
-    )
+    if (image === null || image === undefined) return;
+    ctx.drawImage(image, 0, 0);
   }
 
   function startDraw(e) {
     const BB = canvas.getBoundingClientRect();
-    const startx = (e.clientX - BB.left);
-    const starty = (e.clientY - BB.top);
+    const startx = e.clientX - BB.left;
+    const starty = e.clientY - BB.top;
 
     setStartX(startx);
     setStartY(starty);
@@ -110,6 +106,22 @@ export default function EditingCanvas(props) {
     });
   }
 
+  function handleKeyDown(e) {
+    if (e.key === "z") {
+      let temp = coordinates.pop();
+      setRmCoordinates((prev) => [...prev, temp]);
+      drawImageToCanvas();
+      drawOldBB();
+    }
+
+    if (e.key === "y") {
+      let temp = rmCoordinates.pop()
+      setCoordinates((prev) => [...prev, temp]);
+      drawImageToCanvas();
+      drawOldBB();
+    }
+  }
+
   return (
     <>
       <div className={styles.container}>
@@ -122,6 +134,8 @@ export default function EditingCanvas(props) {
             onMouseDown={startDraw}
             onMouseUp={stopDraw}
             onMouseMove={drawing}
+            onKeyDown={handleKeyDown}
+            tabIndex="0"
           ></canvas>
         </div>
       </div>
