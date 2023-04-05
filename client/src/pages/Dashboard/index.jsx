@@ -2,8 +2,10 @@ import styles from "../../styles/Dashboard/dashboard.module.scss";
 import SummaryData from "./components/summary-data";
 import { data } from "../../data/data-summary-list";
 import Chart from "./components/chart";
+import api from "../../api";
 
 export default function Dashboard() {
+
   return (
     <div className="grid grid-cols-5">
       <div className="col-span-1">
