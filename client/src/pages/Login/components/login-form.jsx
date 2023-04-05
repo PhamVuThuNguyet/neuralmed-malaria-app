@@ -6,7 +6,7 @@ import { ReactComponent as NeuralMed } from "../../../assets/NeuralMed.svg";
 import api from "../../../api";
 
 import styles from "../../../styles/Login/login-form.module.scss";
-import { setUserData } from "../../../store/users/reducer.js";
+import { setUserData } from "../../../store/users/userSlice";
 import { useDispatch } from 'react-redux';
 
 const LoginForm = () => {
@@ -30,13 +30,6 @@ const LoginForm = () => {
       .then(response => {
         alert('Login successfully');
         const { accessToken, user } = response.data;
-        localStorage.setItem('accessToken', accessToken);
-        dispatch(setUserData(user));
-        navigate('/');
-        localStorage.setItem('accessToken', accessToken);
-        dispatch(setUserData(user));
-        navigate('/');
-     
         localStorage.setItem('accessToken', accessToken);
         dispatch(setUserData(user));
         navigate('/');
