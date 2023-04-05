@@ -16,13 +16,18 @@ export default function Dashboard() {
 
   const getData = async () => {
     const data = [];
-
-    const res = await api.get("/health-records", apiConfig);
+    const res_total_record = await api.get("/health-records", apiConfig);
+    const res_total_patient = await api.get("/patients", apiConfig);
+    data.push({
+      "title": "Total patient",
+      "icon": <HouseIcon/>,
+      "total": res_total_patient.data.length
+    })
 
     data.push({
-      "title": "Total records",
+      "title": "Total record",
       "icon": <HouseIcon/>,
-      "total": res.data.length
+      "total": res_total_record.data.length
     });
 
     setSummaryData(data);
