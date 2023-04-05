@@ -1,6 +1,7 @@
-import { React } from "react";
-import { Button, Input, Form, DatePicker } from "antd";
+import { React} from "react";
+import { Button, Input, Form} from "antd";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ReactComponent as NeuralMed } from "../../../assets/NeuralMed.svg";
 import axios from 'axios';
 import styles from "../../../styles/Login/login-form.module.scss";
@@ -17,16 +18,21 @@ const LoginForm = () => {
       inputComponent: <Input.Password placeholder="Password" className={styles.password}></Input.Password>
     }
   ];
-
+  const navigate = useNavigate();
+  
+    // ...
+  
   const onFinish = (values) => {
-    axios.post('/api/submit-form', values)
+    axios.post('http://localhost:3001/api/v1/auth/login', values)
       .then(response => {
         console.log('Form submitted successfully');
+        navigate('/'); // redirect to localhost:3000/
       })
       .catch(error => {
         console.error('Form submission failed:', error);
       });
   };
+  
 
   return (
     <div>
@@ -53,7 +59,7 @@ const LoginForm = () => {
         
         <Form.Item> 
           <div className={styles.button}>
-            <Button 
+            <Button
               type="primary"
               htmlType="submit"
               size="large"

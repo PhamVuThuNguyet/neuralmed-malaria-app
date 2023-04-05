@@ -12,7 +12,9 @@ import { ReactComponent as ListIcon } from "../../assets/List.svg";
 import { useEffect, useRef, useState } from "react";
 
 export default function Diagnosis() {
+  
   const [currentView, setCurrentView] = useState("images");
+
   function SwitchView(view) {
     setCurrentView(view);
   }
@@ -36,7 +38,7 @@ export default function Diagnosis() {
           currentView === "images" ? <ImageList images={images} /> : <InfoList info={patient}/>
         }
         </div>
-      </div>
+      </div>  
       <div className="col-span-5 p-3">
         <div className="grid grid-rows-5">
           <div className="row-span-3">

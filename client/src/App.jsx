@@ -31,7 +31,7 @@ function App() {
         <Route path="/admin" element={<AdminConsole />} />
         <Route path="/diagnosis" element={<Diagnosis />} />
         <Route path="/importdataset" element={<ImportData/>} />
-        <Route path="/login" element={<Login/>} />
+        <Route path="/auth" element={<Login/>} />
       </Routes>
     </MainLayout>
   );
