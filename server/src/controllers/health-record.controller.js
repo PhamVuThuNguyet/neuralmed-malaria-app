@@ -130,6 +130,7 @@ class HealthRecordController {
 
         const msg = 'Your test result has been completed. Please visit and discuss with doctor';
         const to = oldMedical.patient?.phoneNumber;
+        console.log('to', to);
         if(to) {
           sendSMS(msg, to);
         }
