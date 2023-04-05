@@ -2,6 +2,10 @@ const { Patient } = require('../models');
 
 class PatientService {
 
+  findMany(data = {}, options = {}) {
+    return Patient.find(data, options);
+  }
+
   isExisted(data) {
     return Patient.exists(data);
   }
