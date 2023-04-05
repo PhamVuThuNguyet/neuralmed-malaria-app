@@ -33,7 +33,7 @@ class TestResultController {
       const fileStr = req.body.data;
       const uploadResponse = await cloudinary.uploader.upload(fileStr, {folder: "NeuralMed"});
       console.log(uploadResponse);
-      res.json({ msg: `Uploaded Successfully to ${uploadResponse.url}` });
+      res.json({ url: uploadResponse.url });
     } catch (err) {
       console.error(err);
       res.status(500).json({ err: err });
