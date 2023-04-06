@@ -5,7 +5,7 @@ import ImportButton from "./components/import-button";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import api from "../../api";
+import api from "../../api/api";
 
 export default function ImportData() {
   const apiConfig = {

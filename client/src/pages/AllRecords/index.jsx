@@ -3,7 +3,7 @@ import { Button, Table, ConfigProvider, theme, Input, Space } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import Highlighter from "react-highlight-words";
 import styles from "../../styles/AllRecords/allrecords.module.scss";
-import api from "../../api";
+import api from "../../api/api";
 import { GetDateFrom } from "../../utils/get-date";
 
 export default function AllRecords() {
