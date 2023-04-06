@@ -27,6 +27,7 @@ function App() {
         return "Import new Dataset";
       case "/diagnosis":
         return "Diagnosis";
+
       default:
         return "";
     }

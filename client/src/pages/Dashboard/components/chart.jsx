@@ -1,6 +1,6 @@
 import styles from "../../../styles/Dashboard/dashboard-chart.module.scss";
 import React, { useEffect, useState } from "react";
-import api from "../../../api";
+import api from "../../../api/api";
 import {
   Chart as ChartJS,
   ArcElement,
@@ -16,35 +16,42 @@ import {
 import { Doughnut, Bar } from "react-chartjs-2";
 
 export default function Chart(props) {
-
   const [totalCase, setTotalCase] = useState(0);
   const [positiveCase, setPositiveCase] = useState(0);
   const [totalMale, setTotalMale] = useState(0);
-  const [totalFemale, setTotalFemale] = useState(0); 
+  const [totalFemale, setTotalFemale] = useState(0);
 
   const apiConfig = {
     //TODO: token from login
-    headers: { Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDI0NDI2ODU1OWE2OWVhZTdlMDgzN2UiLCJyb2xlIjoiQWRtaW4iLCJpYXQiOjE2ODA3MDQwNjgsImV4cCI6MTY4MDc5MDQ2OH0.8e-t6pM6cbjRVz6o117oD_TeHFQWnwu6U7DC7trk7Hs`}
-  }
+    headers: {
+      Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDI0NDI2ODU1OWE2OWVhZTdlMDgzN2UiLCJyb2xlIjoiQWRtaW4iLCJpYXQiOjE2ODA3MDQwNjgsImV4cCI6MTY4MDc5MDQ2OH0.8e-t6pM6cbjRVz6o117oD_TeHFQWnwu6U7DC7trk7Hs`,
+    },
+  };
 
   const getData = async () => {
     const total_case = await api.get("/patients", apiConfig);
     const total_records = await api.get("/health-records", apiConfig);
-    setTotalCase(total_case.data.length);
-    let data = await total_records.data.map(({patient, testResult}) => ({
+
+    let data = await total_records.data.map(({ patient, testResult }) => ({
       id: patient.idCard,
-      posivte: testResult.at(-1).isPositive
+      positive: testResult.at(-1).isPositive,
     }));
-    data = data.reverse().filter((value, index, self) =>
-      index === self.findIndex((t) => (
-        t.place === value.place && t.name === value.name
-      )))
+    data = data
+      .reverse()
+      .filter(
+        (value, index, self) =>
+          index ===
+          self.findIndex(
+            (t) => t.place === value.place && t.name === value.name
+          )
+      );
+    setTotalCase(total_case.data.length);
     setPositiveCase(data.length);
-    }
+  };
 
   useEffect(() => {
     getData();
-  },[]);
+  }, []);
 
   const root = document.documentElement;
   const style = getComputedStyle(root);
@@ -287,39 +294,41 @@ export default function Chart(props) {
   );
 
   return (
-    <>
-      <div className="flex gap-14">
-        <div className={styles.container}>
-          <div className={styles.title}>Positive Case</div>
-          <div className={styles["chart-area"]}>
-            <div className={styles["main-chart-donut"]}>
-              <Doughnut
-                data={donutData}
-                options={donutOptions}
-                plugins={donutPlugins}
-              />
+    totalCase && (
+      <>
+        <div className="flex gap-14">
+          <div className={styles.container}>
+            <div className={styles.title}>Positive Case</div>
+            <div className={styles["chart-area"]}>
+              <div className={styles["main-chart-donut"]}>
+                <Doughnut
+                  data={donutData}
+                  options={donutOptions}
+                  plugins={donutPlugins}
+                />
+              </div>
+            </div>
+          </div>
+          <div className={styles.container}>
+            <div className={styles.title}>Population Distributed</div>
+            <div className={styles["chart-area"]}>
+              <div className={styles["main-chart-pyramid"]}>
+                <Bar data={pyramidData} options={pyramidOptions} />
+              </div>
             </div>
           </div>
         </div>
-        <div className={styles.container}>
-          <div className={styles.title}>Population Distributed</div>
-          <div className={styles["chart-area"]}>
-            <div className={styles["main-chart-pyramid"]}>
-              <Bar data={pyramidData} options={pyramidOptions} />
+        <div>
+          <div className={styles["big-container"]}>
+            <div className={styles.title}>Patients per month</div>
+            <div className={styles["chart-area"]}>
+              <div className={styles["main-chart-mixed"]}>
+                <Bar data={mixedData} options={mixedOptions} />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div>
-        <div className={styles["big-container"]}>
-          <div className={styles.title}>Patients per month</div>
-          <div className={styles["chart-area"]}>
-            <div className={styles["main-chart-mixed"]}>
-              <Bar data={mixedData} options={mixedOptions} />
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
+      </>
+    )
   );
 }

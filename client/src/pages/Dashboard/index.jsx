@@ -1,7 +1,7 @@
 import styles from "../../styles/Dashboard/dashboard.module.scss";
 import SummaryData from "./components/summary-data";
 import Chart from "./components/chart";
-import api from "../../api";
+import api from "../../api/api";
 import { ReactComponent as HouseIcon } from "../../assets/House.svg";
 import { React, useEffect, useState } from "react";
 

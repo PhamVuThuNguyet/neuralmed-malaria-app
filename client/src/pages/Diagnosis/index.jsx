@@ -6,7 +6,7 @@ import InfoList from "./components/InfoList";
 import EditingCanvas from "./components/EditingCanvas";
 import ResultTabs from "./components/ResultTabs";
 import { Link } from "react-router-dom";
-import api from "../../api";
+import api from "../../api/api";
 
 
 // Btn icon
