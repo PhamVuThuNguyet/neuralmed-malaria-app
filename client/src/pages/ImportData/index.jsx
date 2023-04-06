@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import api from "../../api/api";
+import { toast } from '../../utils/toast'
 
 export default function ImportData() {
   const apiConfig = {
@@ -66,6 +67,7 @@ export default function ImportData() {
         navigate("/diagnosis", { state: dataFinal });
       })
       .catch((error) => {
+        toast.error('An error has occurred');
         console.error(error);
       });
   };

@@ -7,7 +7,7 @@ import EditingCanvas from "./components/EditingCanvas";
 import ResultTabs from "./components/ResultTabs";
 import { Link } from "react-router-dom";
 import api from "../../api/api";
-
+import { toast } from '../../utils/toast'
 
 // Btn icon
 import { ReactComponent as GridIcon } from "../../assets/Grid.svg";
@@ -48,11 +48,11 @@ export default function Diagnosis(props) {
 
   const handleSubmit = async () => {
     if(location.state === null) {
-      alert("Nothing to POST, try go back to import data");
+      toast.error("Nothing to POST, try go back to import data");
       return;
     }
     if(selectedImage === null) {
-      alert("No Image");
+      toast.error("No Image");
       return;
     }
 
@@ -75,7 +75,9 @@ export default function Diagnosis(props) {
     }
     try {
       const res = await api.post("/health-records", data, apiConfig)
+      toast.success('Successfully');
     } catch (error) {
+      toast.error('An error has occurred');
       console.log(error)
     }
 

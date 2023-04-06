@@ -11,6 +11,7 @@ import Home from "./pages/Home";
 import { Pathname } from "./utils/get-location";
 import socket from "./config/socket";
 import { useSelector } from "react-redux";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   const user = useSelector((state) => state.user);
@@ -35,7 +36,6 @@ function App() {
 
   useEffect(() => {
     socket.on("connect", () => {
-      console.log(socket.id);
       socket.on("test-result", ({ patient, result }) => {
         const msg = `You have received test result of patient ${patient}. Do you want to print it?`;
         const isConfirmed = window.confirm(msg);
@@ -55,17 +55,20 @@ function App() {
   }, [user]);
 
   return (
-    <MainLayout header={header()}>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/allrecords" element={<AllRecords />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/admin" element={<AdminConsole />} />
-        <Route path="/diagnosis" element={<Diagnosis />} />
-        <Route path="/importdataset" element={<ImportData />} />
-        <Route path="/auth" element={<Login />} />
-      </Routes>
-    </MainLayout>
+    <>
+      <ToastContainer />
+      <MainLayout header={header()}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/allrecords" element={<AllRecords />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/admin" element={<AdminConsole />} />
+          <Route path="/diagnosis" element={<Diagnosis />} />
+          <Route path="/importdataset" element={<ImportData />} />
+          <Route path="/auth" element={<Login />} />
+        </Routes>
+      </MainLayout>
+    </>
   );
 }
 

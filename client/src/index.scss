@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind base;
@@ -15,8 +15,8 @@
   --color-red: #ec1010;
   --color-light-gray: #858585;
   --color-purple: #e335ff;
-  --color-yellow: #FFD600;
-  --color-green: #C4FFA8;
+  --color-yellow: #ffd600;
+  --color-green: #c4ffa8;
 }
 
 html,
@@ -33,4 +33,9 @@ body {
 @font-face {
   font-family: Futura;
   src: url("../public/Futura\ Bold.otf");
+}
+
+.Toastify__toast-body {
+  font-size: 16px;
+  font-weight: 600;
 }

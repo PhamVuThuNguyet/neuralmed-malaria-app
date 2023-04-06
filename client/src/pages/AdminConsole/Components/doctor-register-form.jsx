@@ -2,6 +2,7 @@ import { React } from "react";
 import { Button, Input, Form, DatePicker, Select } from "antd";
 import styles from "../../../styles/AdminConsole/adminconsole-doctor-register.module.scss";
 import api from "../../../api/api";
+import  { toast } from '../../../utils/toast';
 
 const DoctorRegister = () => {
   const accessToken = localStorage.getItem('accessToken');
@@ -71,10 +72,10 @@ const DoctorRegister = () => {
     }
     api.post('/admin/add-user', user, apiConfig)
     .then(response => {
-      alert('Form submitted successfully');
+      toast.success('Form submitted successfully')
     })
     .catch(error => {
-      alert('Form submitted failed');
+      toast.error('Form submitted failed');
     });
     console.log(values);
   };
