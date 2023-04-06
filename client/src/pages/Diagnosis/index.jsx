@@ -60,6 +60,8 @@ export default function Diagnosis(props) {
     const imageb64 = canvas.toDataURL("image/png");
     const imgURL = await upload(imageb64);
 
+    console.log(location.state);
+
     const data = {
       "patient": location.state.id,
       "doctor": location.state.receive_doc,
