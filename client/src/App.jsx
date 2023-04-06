@@ -25,6 +25,8 @@ function App() {
         return "Dashboard";
       case "/importdataset":
         return "Import new Dataset";
+      case "/diagnosis":
+        return "Diagnosis";
       default:
         return "";
     }
@@ -46,9 +48,9 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if(user._id) {
+    if (user._id) {
       socket.emit("login", { _id: user._id });
-    } 
+    }
   }, [user]);
 
   return (
