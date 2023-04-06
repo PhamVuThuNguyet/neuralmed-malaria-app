@@ -1,8 +1,8 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../../../../styles/Diagnosis/editing-canvas.module.scss";
 
 export default function EditingCanvas(props) {
-  const canvasRef = useRef(null);
+  const canvasRef = props.canvasRef;
   const [isDrawing, setIsDrawing] = useState(false);
   const [coordinates, setCoordinates] = useState([]);
   const [rmCoordinates, setRmCoordinates] = useState([]);
