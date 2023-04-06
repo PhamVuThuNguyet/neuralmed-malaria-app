@@ -1,5 +1,6 @@
 const healthRecordService = require('../services/health-record.service');
 const testResultService = require('../services/test-result.service');
+const patientService = require('../services/patient.service');
 const { MESSAGES } = require('../constants/variables');
 const { sendSMS } = require('../utils/twillo.utils');
 
@@ -22,6 +23,8 @@ class HealthRecordController {
   async create(req, res) {
     try {
       const { testResult: inputTestResult,...rest } = req.body;
+      const patient = await patientService.findOne({ idCard: req.body.patient });
+      rest.patient = patient._id;
       const medical = await healthRecordService.createOne(rest);
       const oldMedical = await healthRecordService.findOne({ _id: medical._id });
 
