@@ -9,15 +9,10 @@ export default function Dashboard() {
 
   const [summaryData, setSummaryData] = useState([]);
 
-  const apiConfig = {
-    //TODO: token from login
-    headers: { Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDI0NDI2ODU1OWE2OWVhZTdlMDgzN2UiLCJyb2xlIjoiQWRtaW4iLCJpYXQiOjE2ODA3MDQwNjgsImV4cCI6MTY4MDc5MDQ2OH0.8e-t6pM6cbjRVz6o117oD_TeHFQWnwu6U7DC7trk7Hs`}
-  }
-
   const getData = async () => {
     const data = [];
-    const res_total_record = await api.get("/health-records", apiConfig);
-    const res_total_patient = await api.get("/patients", apiConfig);
+    const res_total_record = await api.get("/health-records");
+    const res_total_patient = await api.get("/patients");
     data.push({
       "title": "Total patient",
       "icon": <HouseIcon/>,

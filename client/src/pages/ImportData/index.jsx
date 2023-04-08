@@ -9,13 +9,6 @@ import api from "../../api/api";
 import { toast } from '../../utils/toast'
 
 export default function ImportData() {
-  const apiConfig = {
-    //TODO: token from login
-    headers: {
-      Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDI0NDI2ODU1OWE2OWVhZTdlMDgzN2UiLCJyb2xlIjoiQWRtaW4iLCJpYXQiOjE2ODA3MDQwNjgsImV4cCI6MTY4MDc5MDQ2OH0.8e-t6pM6cbjRVz6o117oD_TeHFQWnwu6U7DC7trk7Hs`,
-    },
-  };
-
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [preview, setPreview] = useState([]);
   const [outputValue, setOutputValue] = useState("");
@@ -73,7 +66,7 @@ export default function ImportData() {
   };
 
   const getData = async (value) => {
-    const res = await api.get(`/patients/${value}`, apiConfig);
+    const res = await api.get(`/patients/${value}`);
     return res;
   };
 
