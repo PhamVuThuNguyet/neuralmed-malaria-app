@@ -5,13 +5,6 @@ import api from "../../../api/api";
 import  { toast } from '../../../utils/toast';
 
 const DoctorRegister = () => {
-  const accessToken = localStorage.getItem('accessToken');
-  const apiConfig = {
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-      "Content-Type": "application/json",
-    },
-  };
   const [form] = Form.useForm();
   const formItems = [
     {
@@ -57,7 +50,6 @@ const DoctorRegister = () => {
   ];
 
   const onFinish = (values) => {
- 
     const info = {
        age: values.age,
        department: values.department,
@@ -70,7 +62,7 @@ const DoctorRegister = () => {
       role: values.role,
       info: info
     }
-    api.post('/admin/add-user', user, apiConfig)
+    api.post('/admin/add-user', user)
     .then(response => {
       toast.success('Form submitted successfully')
     })
