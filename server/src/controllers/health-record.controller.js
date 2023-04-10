@@ -55,7 +55,6 @@ class HealthRecordController {
       res.json(newRecord);
 
     } catch (error) {
-      console.log(error);
       res.status(500).send();
     }
   }
@@ -133,7 +132,6 @@ class HealthRecordController {
 
         const msg = 'Your test result has been completed. Please visit and discuss with doctor';
         const to = oldMedical.patient?.phoneNumber;
-        console.log('to', to);
         if(to) {
           sendSMS(msg, to);
         }

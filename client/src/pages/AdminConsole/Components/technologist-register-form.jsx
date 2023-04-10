@@ -2,6 +2,7 @@ import { React } from "react";
 import { Button, Input, Form, DatePicker } from "antd";
 import axios from 'axios';
 import styles from "../../../styles/AdminConsole/adminconsole-doctor-register.module.scss";
+import { toast } from "../../../utils/toast";
 
 const TechnologistRegister = () => {
   const [form] = Form.useForm();
@@ -36,10 +37,10 @@ const TechnologistRegister = () => {
   const onFinish = (values) => {
     axios.post('http://localhost:3001/api/v1/admin/add-user', values)
       .then(response => {
-        console.log('Form submitted successfully');
+        toast.success('Form submitted successfully');
       })
       .catch(error => {
-        console.error('Form submission failed:', error);
+        toast.error('Form submission failed');
       });
   };
 

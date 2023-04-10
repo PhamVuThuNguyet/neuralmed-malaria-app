@@ -8,6 +8,7 @@ import api from "../../../api/api";
 import styles from "../../../styles/Login/login-form.module.scss";
 import { setUserData } from "../../../store/users/userSlice";
 import { useDispatch } from 'react-redux';
+import { toast } from '../../../utils/toast';
 
 const LoginForm = () => {
   const [form] = Form.useForm();
@@ -28,14 +29,15 @@ const LoginForm = () => {
   const onFinish = (values) => {
     api.post('/auth/login', values)
       .then(response => {
-        alert('Login successfully');
-        const { accessToken, user } = response.data;
+        toast.success('Login successfully');
+        const { accessToken, refreshToken, user } = response.data;
         localStorage.setItem('accessToken', accessToken);
+        localStorage.setItem('refreshToken', refreshToken);
         dispatch(setUserData(user));
         navigate('/');
       })
       .catch(error => {
-        alert('Password is not correct or account does not exsist');
+        toast.error('Password is not correct or account does not exist');
       });
   };
   

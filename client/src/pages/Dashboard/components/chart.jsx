@@ -21,16 +21,9 @@ export default function Chart(props) {
   const [totalMale, setTotalMale] = useState(0);
   const [totalFemale, setTotalFemale] = useState(0);
 
-  const apiConfig = {
-    //TODO: token from login
-    headers: {
-      Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDI0NDI2ODU1OWE2OWVhZTdlMDgzN2UiLCJyb2xlIjoiQWRtaW4iLCJpYXQiOjE2ODA3MDQwNjgsImV4cCI6MTY4MDc5MDQ2OH0.8e-t6pM6cbjRVz6o117oD_TeHFQWnwu6U7DC7trk7Hs`,
-    },
-  };
-
   const getData = async () => {
-    const total_case = await api.get("/patients", apiConfig);
-    const total_records = await api.get("/health-records", apiConfig);
+    const total_case = await api.get("/patients");
+    const total_records = await api.get("/health-records");
 
     let data = await total_records.data.map(({ patient, testResult }) => ({
       id: patient.idCard,

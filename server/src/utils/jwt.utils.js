@@ -2,7 +2,6 @@ require("dotenv").config();
 const jwt = require("jsonwebtoken");
 
 const generateToken = (data) => {
-  console.log('data', data);
   try {
     const accessToken = jwt.sign(data, process.env.JWT_SECRET, {
       expiresIn: process.env.JWT_TTL,
@@ -21,7 +20,7 @@ const decodeToken = (token) => {
   try {
     return jwt.verify(token, process.env.JWT_SECRET);
   } catch (error) {
-    return "";
+    return ;
   }
 };
 

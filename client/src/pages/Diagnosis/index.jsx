@@ -7,7 +7,7 @@ import EditingCanvas from "./components/EditingCanvas";
 import ResultTabs from "./components/ResultTabs";
 import { Link } from "react-router-dom";
 import api from "../../api/api";
-
+import { toast } from '../../utils/toast'
 
 // Btn icon
 import { ReactComponent as GridIcon } from "../../assets/Grid.svg";
@@ -24,14 +24,6 @@ export default function Diagnosis(props) {
   const image_ = location.state?.image;
   const canvasRef = useRef();
 
-  const apiConfig = {
-    //TODO: token from login
-    headers: {
-      Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDI0NDI2ODU1OWE2OWVhZTdlMDgzN2UiLCJyb2xlIjoiQWRtaW4iLCJpYXQiOjE2ODA3MDQwNjgsImV4cCI6MTY4MDc5MDQ2OH0.8e-t6pM6cbjRVz6o117oD_TeHFQWnwu6U7DC7trk7Hs`,
-      "Content-Type": "application/json",
-    },
-  };
-
   useEffect(() => {
     const image = new Image();
     image.onload = () => {
@@ -42,17 +34,17 @@ export default function Diagnosis(props) {
   }, [image_]);
 
   const upload = async (image) => {
-    const res = await api.post("/test-results/upload", { data: image }, apiConfig);
+    const res = await api.post("/test-results/upload", { data: image });
     return res.data.url;
   };
 
   const handleSubmit = async () => {
     if(location.state === null) {
-      alert("Nothing to POST, try go back to import data");
+      toast.error("Nothing to POST, try go back to import data");
       return;
     }
     if(selectedImage === null) {
-      alert("No Image");
+      toast.error("No Image");
       return;
     }
 
@@ -74,8 +66,10 @@ export default function Diagnosis(props) {
       }
     }
     try {
-      const res = await api.post("/health-records", data, apiConfig)
+      const res = await api.post("/health-records", data)
+      toast.success('Successfully');
     } catch (error) {
+      toast.error('An error has occurred');
       console.log(error)
     }
 
