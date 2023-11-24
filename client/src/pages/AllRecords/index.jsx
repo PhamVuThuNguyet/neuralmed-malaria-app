@@ -1,34 +1,12 @@
-import { React, useState, useRef, useEffect } from "react";
+import { React, useState, useRef } from "react";
 import { Button, Table, ConfigProvider, theme, Input, Space } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import Highlighter from "react-highlight-words";
+import { data } from "../../data/all-records";
 import styles from "../../styles/AllRecords/allrecords.module.scss";
-import api from "../../api/api";
-import { GetDateFrom } from "../../utils/get-date";
-
 export default function AllRecords() {
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [tableData, setTableData] = useState(null);
-
-  const getData = async () => {
-    const res = await api.get("/health-records");
-    const data = res.data.map(({_id, patient, doctor, department, createdAt}) => ({
-      key: _id,
-      id: _id,
-      name: patient.name,
-      phone: patient.phoneNumber,
-      date: GetDateFrom(createdAt),
-      doctor: doctor.name,
-      department: department,
-    }));
-    setTableData(data);
-  }
-
-  useEffect(() => {
-    getData();
-  },[loading]);
-
   const start = () => {
     setLoading(true);
     // ajax request after empty completing
@@ -231,7 +209,7 @@ export default function AllRecords() {
           <Table
             rowSelection={rowSelection}
             columns={columns}
-            dataSource={tableData}
+            dataSource={data}
             pagination={{
               pageSize: 10,
             }}
